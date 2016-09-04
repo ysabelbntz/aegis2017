@@ -18,19 +18,73 @@
 
 $(document).ready(function () {
 
-	var menu = $('.sticky');
-	var origOffsetY = menu.offset().top;
+	try {
+		var menu = $('.sticky');
+		var origOffsetY = menu.offset().top;	
+	}
+	catch(err) {
+
+	}
+	
 
 	function scroll() {
-    if ($(window).scrollTop() >= origOffsetY) {
-        $('.sticky').addClass('navbar-fixed-top');
-    } else {
-        $('.sticky').removeClass('navbar-fixed-top');
-    }
+	    if ($(window).scrollTop() >= origOffsetY) {
+	        $('.sticky').addClass('navbar-fixed-top');
+	    } else {
+	        $('.sticky').removeClass('navbar-fixed-top');
+	    }
+	}
 
+	$('#account_student_id').on('input', function() {
+	    var value = $(this).val();
+	    var length = value.toString().length;
 
-   }
+	    if(length == 6) {
+	      $.ajax({
+	        method: 'GET',
+	        url: '/students/search',
+	        data: { id: value },
+	        dataType: 'json',
+	        success: function(student) {
+	            // name = camelize(student.stu_full_name);
+	            // crs = student.stu_course;  
+	            // yr = student.stu_year;
+	            // if (name!=null){
+	            //   $('#student-name').text(name);  
+	            //   $('#student-yrcrs').text(yr + " - " + crs);
+	            // }
+	            // else {
+	            //   $('#student-name').text("Student not found.");
+	            // }
+	            
+	            
+	            // if ($('#student-name').text() != "Student not found.") {
+	            //   $('#form button').click();
+	            // }
+	            $('#student-name').text(student[0].name);
+	            $('#student-yrcrs').text(student[0].yr + " - " + student[0].course);
+	            $('#student-school').text(student[0].school);
 
-  document.onscroll = scroll;
+	            $('#account_name').val(student[0].name);
+	            $('#account_yr').val(student[0].yr);
+	            $('#account_course').val(student[0].course);
+	            $('#account_school').val(student[0].school);
+	          }
+	      });
+	            
+	       
+	    } else {
+		    $('#student-name').text("Student not found.");
+		    $('#student-yrcrs').text("");
+		    $('#student-school').text("");
+
+		    $('#account_name').val("");
+	        $('#account_yr').val("");
+	        $('#account_course').val("");
+	        $('#account_school').val("");
+	    }
+	  }); 
+
+  	document.onscroll = scroll;
 
 });

@@ -40,7 +40,11 @@
 		    </li>
           </ul>
         </li>
-        <li><%= link_to 'REGISTER', new_account_registration_path %></li>
+        <% if account_signed_in? %>
+        	<li><%= link_to "LOG OUT", destroy_account_session_path, :method => :delete %></li>
+        <% else %>
+        	<li><%= link_to 'REGISTER', new_account_registration_path, method: :get %></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
