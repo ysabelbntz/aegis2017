@@ -12,5 +12,25 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function () {
+
+	var menu = $('nav');
+	var origOffsetY = menu.offset().top;
+
+	function scroll() {
+    if ($(window).scrollTop() >= origOffsetY) {
+        $('nav').addClass('navbar-fixed-top');
+    } else {
+        $('nav').removeClass('navbar-fixed-top');
+    }
+
+
+   }
+
+  document.onscroll = scroll;
+
+});
