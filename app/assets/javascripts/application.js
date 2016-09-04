@@ -18,14 +18,14 @@
 
 $(document).ready(function () {
 
-	var menu = $('nav');
+	var menu = $('.sticky');
 	var origOffsetY = menu.offset().top;
 
 	function scroll() {
     if ($(window).scrollTop() >= origOffsetY) {
-        $('nav').addClass('navbar-fixed-top');
+        $('.sticky').addClass('navbar-fixed-top');
     } else {
-        $('nav').removeClass('navbar-fixed-top');
+        $('.sticky').removeClass('navbar-fixed-top');
     }
 
 
