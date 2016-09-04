@@ -11,17 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904102948) do
+ActiveRecord::Schema.define(version: 20160904133909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.text     "name"
+    t.string   "name"
     t.integer  "yr"
-    t.text     "course"
+    t.string   "course"
     t.text     "writeup"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -59,20 +57,17 @@ ActiveRecord::Schema.define(version: 20160904102948) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "students", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text     "name"
-    t.integer  "yr"
-    t.text     "course"
+    t.string  "name"
+    t.integer "yr"
+    t.string  "course"
+    t.string  "school"
   end
 
   create_table "timeslots", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text     "start_time"
-    t.text     "end_time"
-    t.date     "date"
-    t.integer  "student_id"
+    t.text    "start_time"
+    t.text    "end_time"
+    t.date    "date"
+    t.integer "student_id"
   end
 
 end

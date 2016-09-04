@@ -34,61 +34,71 @@
 </nav>
 
 <div class="container">
-  <h1>Register</h1>
-  <h5>Create an account for photoshoot sign-ups, write-up submissions and online previews.</h5>
-
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-
-    <h4>Student information</h4>
-
-    <div class="field">
-      <%= f.label :student_id %><br />
-      <%= f.input :student_id %>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-4">
+      <h1>Register</h1>
+      <h5>Create an account for photoshoot sign-ups, write-up submissions and online previews.</h5>
     </div>
+  </div>
 
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.input :name %>
-    </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-5">
 
-    <div class="field">
-      <%= f.label :yr %><br />
-      <%= f.input :yr %>
-    </div>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
 
-    <div class="field">
-      <%= f.label :course %><br />
-      <%= f.input :course %>
-    </div>
+        <h4>Student information</h4>
 
-    <div class="field">
-      <%= f.label :school %><br />
-      <%= f.input :school %>
-    </div>
+        <div class="field">
+          <%= f.label :student_id, "ID number" %>
+          <%= f.input :student_id, label: false %>
+        </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email %>
-    </div>
+        <div class="field">
+          <%= f.label :name, "Full name" %>
+          <%= f.input :name, label: false %>
+        </div>
 
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
+        <div class="field">
+          <%= f.label :yr, "Year" %>
+          <%= f.input :yr, label: false %>
+        </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
+        <div class="field">
+          <%= f.label :course, "Course" %>
+          <%= f.input :course, label: false %>
+        </div>
 
-    <div class="actions">
-      <%= f.submit "Sign up" %>
+        <div class="field">
+          <%= f.label :school, "School" %>
+          <%= f.input :school, label: false %>
+        </div>
+
+        <h4>Account details</h4>
+        <div class="field">
+          <%= f.label :email, "Email" %>
+          <%= f.email_field :email, label: false %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
 
 <%= render "devise/shared/links" %>
