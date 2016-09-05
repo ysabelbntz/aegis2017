@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* COLORS */
+@import 'colors';
 
 .field {
 	margin-bottom: 20px;
@@ -13,3 +15,16 @@
 		color: #203053;
 	}
 }
+
+#regform{
+	font-weight: bold;
+	text-align: left!important;
+}
+
+	.regform_fields{
+		padding: 10px 20px;
+		margin:8px 0;
+		box-sizing:border-box;
+		border-radius:0; 
+		background-color:#e6e6e6;
+	}
