@@ -19,11 +19,8 @@
 
 @import 'https://fonts.googleapis.com/css?family=Roboto:400,900|Source+Serif+Pro:700';
 
-/* COLORS */
+@import 'colors';
 
-$blue: #203053;
-$darkerblue: #111D37;
-$texthighlight: #8CBCD9;
 
 body {
 	margin: 0;
@@ -73,3 +70,8 @@ nav {
 	.navbar .navbar-collapse {
 	  	text-align: center;
 	}
+
+.right-align { text-align: right; }
+.left-align { text-align: left; }
+.center-align { text-align: center; }
+.text-bold { font-weight: 700; }

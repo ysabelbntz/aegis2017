@@ -7,11 +7,19 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pages#index'
 
-resources :students do
-  collection do
-    get 'search'
+  resources :students do
+    collection do
+      get 'search'
+    end
   end
-end
+
+  resources :admins do
+    collection do
+      get 'index'
+      get 'accounts'
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -60,4 +68,5 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  get "*any", via: :all, to: "pages#not_found"
 end

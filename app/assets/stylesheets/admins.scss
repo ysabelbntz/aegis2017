@@ -1,0 +1,16 @@
+// Place all the styles related to the admins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import "colors";
+
+.with-fixed-navbar {
+	padding-top: 100px;
+	padding-bottom:200px;
+}
+
+.admins {
+	font-family: "Roboto";
+	font-weight: 400;
+}

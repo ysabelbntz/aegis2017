@@ -35,7 +35,7 @@ $(document).ready(function () {
 	    }
 	}
 
-	$('#account_student_id').on('input', function() {
+	$('#account_id').on('input', function() {
 	    var value = $(this).val();
 	    var length = value.toString().length;
 

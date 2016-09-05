@@ -4,10 +4,7 @@
 
 
 /* COLORS */
-
-$blue: #203053;
-$darkerblue: #111D37;
-$texthighlight: #8CBCD9;
+@import 'colors';
 
 h1 {
 	color: $blue;
@@ -43,6 +40,14 @@ h5 {
 			text-align: center;
 			color:white;
 		}
+		h1 { color: white;}
+		a { 
+			font-family: "Roboto";
+			font-weight:400;
+			color: white;
+			text-align: center;
+		}
+		p {text-align: center;}
 	}
 	
 	.arrow-down {
@@ -83,3 +88,4 @@ h5 {
 			}
 		}
 	}
+
