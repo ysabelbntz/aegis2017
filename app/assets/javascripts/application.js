@@ -25,6 +25,26 @@ $(document).ready(function () {
 	catch(err) {
 
 	}
+
+	$('a[href^="#"]').on('click', function (x) {
+        x.preventDefault();
+        $(document).off("scroll");
+        
+        $('a').each(function () {
+            $(this).parent().removeClass('active');
+        })
+        $(this).parent().addClass('active');
+      
+        var target = this.hash,
+            menu = target;
+        $target = $(target);
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top+2
+        }, 500, 'swing', function () {
+            window.location.hash = target;
+            $(document).on("scroll", onScroll);
+        });
+    });
 	
 
 	function scroll() {
@@ -33,6 +53,19 @@ $(document).ready(function () {
 	    } else {
 	        $('.sticky').removeClass('navbar-fixed-top');
 	    }
+
+	    var scrollPos = $(document).scrollTop();
+	    $('nav a').each(function () {
+	        var currLink = $(this);
+	        var refElement = $(currLink.attr("href"));
+	        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+	            // $('#menu-center ul li a').removeClass("active");
+	            currLink.parent().addClass("active");
+	        }
+	        else{
+	            currLink.parent().removeClass("active");
+	        }
+	    });
 	}
 
 	$('#account_id').on('input', function() {
