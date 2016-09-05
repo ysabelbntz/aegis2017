@@ -26,6 +26,7 @@ $(document).ready(function () {
 
 	}
 
+	//https://jsfiddle.net/cse_tushar/Dxtyu/141/
 	$('a[href^="#"]').on('click', function (x) {
         x.preventDefault();
         $(document).off("scroll");
