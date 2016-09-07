@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'will_paginate'
 gem 'bootstrap-sass'
 gem 'simple_form'
+gem 'seed_dump'
+gem 'rails_12factor', group: :production
+ruby "2.2.3"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
