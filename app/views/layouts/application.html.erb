@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Aegis 2017</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>AEGIS 2017</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<link href="/assets/favicon.png" rel="shortcut icon" type="image/x-icon" />
+
+	<meta property="og:image" content="<%=image_path('loader.png')%>" />
+
+	<meta property="og:description" content="The official college yearbook of the Ateneo de Manila University." />
+
+	<meta property="og:url" content="http://aegis2017.com" />
+
+	<meta property="og:title" content="AEGIS 2017" />
+	<%= csrf_meta_tags %>
 </head>
 <body>
 
