@@ -61,6 +61,35 @@ nav {
 		li:hover {
 			background: $darkerblue!important;
 		}
+	form {
+		input {
+			width: 100%;
+			padding: 12px 20px!important;
+			margin:8px 0!important;
+			box-sizing:border-box!important;
+			border-radius:0!important; 
+			background-color:#e6e6e6!important;
+		}
+			input[type="checkbox"]{
+				width:auto!important;
+				margin-right: 5px;
+			}
+		label.checkbox-inline {
+			padding-left: 0!important;
+			margin:4px;
+			font-family: "Roboto";
+		}
+
+		.btn {
+			background-color:#203053!important;
+			color:#79ADD2!important;
+			font-weight:bold!important;
+			width:100%!important;
+			border-radius:0!important;
+			margin:8px 0!important;
+			padding: 12px 5px!important;
+		}
+	}
 }
 	.navbar .navbar-nav {
 		display: inline-block;

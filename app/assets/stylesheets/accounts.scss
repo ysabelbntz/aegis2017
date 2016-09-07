@@ -21,10 +21,18 @@
 	text-align: left!important;
 }
 
-	.regform_fields{
+	.regform_fields {
 		padding: 10px 20px;
 		margin:8px 0;
 		box-sizing:border-box;
 		border-radius:0; 
 		background-color:#e6e6e6;
 	}
+
+#account-details {
+	border-right:1px solid black;
+	min-height: 50vh;
+	font-family: "Roboto";
+	h3,h2 { font-weight: 700; }
+	h2 {text-transform:capitalize;}
+}

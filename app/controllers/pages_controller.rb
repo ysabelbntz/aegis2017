@@ -1,6 +1,21 @@
 class PagesController < ApplicationController
+	helper_method :resource_name, :resource, :devise_mapping
+
 	def index
 	end
+
+	def resource_name
+	    :account
+	end
+	 
+	def resource
+	    @resource ||= Account.new
+	end
+	 
+	def devise_mapping
+	    @devise_mapping ||= Devise.mappings[:account]
+	end
+
 	
 	def not_found
 	    respond_to do |format|

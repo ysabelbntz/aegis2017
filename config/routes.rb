@@ -20,6 +20,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :accounts do
+    collection do
+      get 'index'
+    end
+  end
+
+ 
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
