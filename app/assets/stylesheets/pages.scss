@@ -84,7 +84,16 @@ h5 {
 			p {
 				font-family: "Roboto";
 				font-weight: 400;
+				a {
+					color: $blue;
+					text-decoration: underline;
+					font-weight:700;
+				}
+				a:hover {
+					text-decoration:none;
+				}
 			}
+
 			.bold {
 				font-weight:700;
 			}
