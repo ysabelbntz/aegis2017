@@ -51,8 +51,10 @@ $(document).ready(function () {
 	function scroll() {
 	    if ($(window).scrollTop() >= origOffsetY) {
 	        $('.sticky').addClass('navbar-fixed-top');
+	        $('#announcements').css("padding-top","70px");
 	    } else {
 	        $('.sticky').removeClass('navbar-fixed-top');
+	        $('#announcements').css("padding-top","0px");
 	    }
 
 	    var scrollPos = $(document).scrollTop();
