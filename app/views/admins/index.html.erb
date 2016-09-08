@@ -15,6 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class=""><%= link_to 'STUDENTS', admins_path, method: :get %></li>
+        <li><%= link_to 'EVENTS', events_path, method: :get %></li>
         <li><%= link_to 'ACCOUNTS', accounts_admins_path, method: :get %></li>
         <li><%= link_to "LOG OUT", destroy_admin_session_path, :method => :delete %></a>
         </li>
@@ -49,3 +50,5 @@
     <div class="flex col-xs-12"><%= will_paginate @students %></div>
   </div>
 </div>
+
+
