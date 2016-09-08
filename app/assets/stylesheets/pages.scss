@@ -21,7 +21,9 @@ h5 {
 	font-weight:400;
 }
 
-
+.fc-event, .fc-event:hover, .ui-widget .fc-event {
+	background-color: #3a87ad;
+}
 
 #home-page {
 	background-image: image-url("homebg.png");
