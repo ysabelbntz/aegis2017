@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   devise_for :admins
   devise_for :accounts, controllers: { registrations: "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.

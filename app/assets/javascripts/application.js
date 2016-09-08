@@ -15,8 +15,19 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+//= require moment 
+//= require fullcalendar
+
+
 
 $(document).ready(function () {
+
+	$('#calendar').fullCalendar({
+		events: '/events.json',
+		eventRender: function(event, element) {
+		    $(element).tooltip({title: event.title});             
+		}
+	});
 
 	try {
 		var menu = $('.sticky');
