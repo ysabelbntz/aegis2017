@@ -14,3 +14,55 @@
 	font-family: "Roboto";
 	font-weight: 400;
 }
+
+.event-crud{
+     background-color: #203053;
+     color: #79ADD2!important;
+     padding: 1.5px 13px;
+     border-radius:3px;
+     float:right;
+}
+
+.event-crud:hover, .event-new:hover{
+     text-decoration: none;
+     color: white!important;
+     background-color:#111D37!important;
+}
+
+.event-new{
+     background-color: #203053;
+     color: #79ADD2!important;
+     padding: 13px 26px;
+     font-weight:bold;
+     border-radius:2px;
+     float:right;
+     margin-bottom: 2%;
+     text-transform: uppercase;
+}
+
+.event-table td{
+	line-height: 25px!important;
+}
+
+.event-submit{
+	background-color:#203053;
+	color:#79ADD2;
+	font-weight:bold;
+	width:70%;
+	border-radius:0;
+	margin:8px 0;
+	text-transform: uppercase;
+}
+
+.event-back{
+	color:gray;
+	font-weight:normal;
+	margin-top:6.5%;
+	font-size:12px;
+}
+
+.event-back:hover {
+     text-decoration: none;
+     color: white!important;
+     background-color:#111D37!important;
+}
