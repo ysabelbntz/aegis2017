@@ -2401,3 +2401,7 @@ Student.create!([
   {id: 135047, name: "TOMITA, AKIKO O.", yr: 4, course: "AB IS", school: "SOH", account: false},
   {id: 134463, name: "YANG, CATHERINE FAITH C.", yr: 4, course: "BS MAC", school: "SOM", account: false}
 ])
+Event.create!([
+  {title: "Website Launch", description: "", start_time: "2016-09-12", end_time: "2016-09-12"},
+  {title: "Photoshoot Proper For Seniors, Super Seniors and Groups", description: "", start_time: "2016-10-17", end_time: "2016-11-18"}
+])
