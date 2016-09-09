@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908065413) do
+ActiveRecord::Schema.define(version: 20160909062755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160908065413) do
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true, using: :btree
+  add_index "accounts", ["student_id"], name: "index_accounts_on_student_id", using: :btree
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -59,8 +60,8 @@ ActiveRecord::Schema.define(version: 20160908065413) do
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.date     "start_time"
-    t.date     "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

@@ -23,10 +23,10 @@ $('.registrations.new').ready(function () {
 
 	var terms_read = false;
 	var terms_accepted = false;
-	$('input[type=submit]').attr("disabled", "disabled");
-	$('input[type=submit]').addClass('disable-button');
+	$('.registrations.new input[type=submit]').attr("disabled", "disabled");
+	$('.registrations.new input[type=submit]').addClass('disable-button');
 
-	$('#account_id').on('input', function() {
+	$('#account_student_id').on('input', function() {
 	    var value = $(this).val();
 	    var length = value.toString().length;
 
@@ -39,8 +39,8 @@ $('.registrations.new').ready(function () {
 	        success: function(student) {
 	            if (student[0].name == "Account already created.") {
 	            	$('#student-name').text(student[0].name);	
-	            	$('input[type=submit]').attr("disabled", "disabled");
-					$('input[type=submit]').addClass('disable-button');
+	            	$('.registrations.new input[type=submit]').attr("disabled", "disabled");
+					$('.registrations.new input[type=submit]').addClass('disable-button');
 	            }
 	            else {
 		            $('#student-name').text(student[0].name);
@@ -68,8 +68,8 @@ $('.registrations.new').ready(function () {
 	        $('#account_yr').val("");
 	        $('#account_course').val("");
 	        $('#account_school').val("");
-	        $('input[type=submit]').attr("disabled", "disabled");
-			$('input[type=submit]').addClass('disable-button');
+	        $('.registrations.new input[type=submit]').attr("disabled", "disabled");
+			$('.registrations.new input[type=submit]').addClass('disable-button');
 	    }
 	  }); 
 
@@ -98,13 +98,12 @@ $('.registrations.new').ready(function () {
 	function activateSubmit() {
 		console.log("test_");
 		if ((terms_accepted) && (terms_read) && ($('#student-name').text() != "Student not found." || $('#student-name').text() != "Account already created.")) {
-			$('input[type=submit]').attr("disabled", "false");
-			$('input[type=submit]').removeClass('disable-button');
+			$('.registrations.new input[type=submit]').removeAttr("disabled");
+			$('.registrations.new input[type=submit]').removeClass('disable-button');
 		}
 		else {
-			console.log(terms_accepted +" " +terms_read);
-			$('input[type=submit]').attr("disabled", "disabled");
-			$('input[type=submit]').addClass('disable-button');
+			$('.registrations.new input[type=submit]').attr("disabled", "disabled");
+			$('.registrations.new input[type=submit]').addClass('disable-button');
 		}
 	}
 });
@@ -171,7 +170,6 @@ $(document).ready(function () {
 	    });
 	}
 
-	
 
   	document.onscroll = scroll;
 
