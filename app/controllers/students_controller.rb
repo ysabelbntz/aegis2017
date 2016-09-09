@@ -3,10 +3,8 @@ class StudentsController < ApplicationController
 	def search 
 		idparams = params[:id]
 		@student=Student.where(id: idparams)
-		
-		@account=Account.where(student_id: idparams)
 
-		if @account.present?
+		if @student[0].account
 			respond_to do |format|
 				format.html
 				format.json {render json: [{name:"Account already created.",yr:"",course:"",school:""}]}

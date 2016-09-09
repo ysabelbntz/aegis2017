@@ -122,3 +122,24 @@ footer {
 	}
 	a:visited { color: #aaaaaa;}
 }
+
+form input[type="submit"] {
+	background-color:$darkerblue;
+	color:#79ADD2;
+	font-weight:bold;
+	border-radius:0;
+	font-size: 1.3em;
+	padding: 10px 20px;
+	box-shadow: none;
+	appearance: none;
+	border: none;
+	transition: 0.3s ease;
+	&.disable-button {
+		background:grey;
+		color: white;
+		&:hover {background-color: grey;}
+	}
+	&:hover {
+		background-color: $blue;
+	}
+}

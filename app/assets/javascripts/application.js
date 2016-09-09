@@ -19,6 +19,95 @@
 //= require fullcalendar
 
 
+$('.registrations.new').ready(function () {
+
+	var terms_read = false;
+	var terms_accepted = false;
+	$('input[type=submit]').attr("disabled", "disabled");
+	$('input[type=submit]').addClass('disable-button');
+
+	$('#account_id').on('input', function() {
+	    var value = $(this).val();
+	    var length = value.toString().length;
+
+	    if(length == 6) {
+	      $.ajax({
+	        method: 'GET',
+	        url: '/students/search',
+	        data: { id: value },
+	        dataType: 'json',
+	        success: function(student) {
+	            if (student[0].name == "Account already created.") {
+	            	$('#student-name').text(student[0].name);	
+	            	$('input[type=submit]').attr("disabled", "disabled");
+					$('input[type=submit]').addClass('disable-button');
+	            }
+	            else {
+		            $('#student-name').text(student[0].name);
+		            $('#student-yrcrs').text(student[0].yr + " - " + student[0].course);
+		            $('#student-school').text(student[0].school);
+
+		            $('#account_name').val(student[0].name);
+		            $('#account_yr').val(student[0].yr);
+		            $('#account_course').val(student[0].course);
+		            $('#account_school').val(student[0].school);
+
+		   //          $('input[type=submit]').attr("disabled", "false");
+					// $('input[type=submit]').removeClass('disable-button');
+	        	}
+	          }
+	      });
+	            
+	       
+	    } else {
+		    $('#student-name').text("Student not found.");
+		    $('#student-yrcrs').text("");
+		    $('#student-school').text("");
+
+		    $('#account_name').val("");
+	        $('#account_yr').val("");
+	        $('#account_course').val("");
+	        $('#account_school').val("");
+	        $('input[type=submit]').attr("disabled", "disabled");
+			$('input[type=submit]').addClass('disable-button');
+	    }
+	  }); 
+
+	$('#terms-read').click(function() {
+	    var $this = $(this);
+  
+	    if ($this.is(':checked')) {
+	    	terms_read = true;
+	    } else {
+	    	terms_read = false;
+	    }
+	    activateSubmit();
+	});
+
+	$('#terms-accept').click(function() {
+	    var $this = $(this);
+  
+	    if ($this.is(':checked')) {
+	    	terms_accepted = true;
+	    } else {
+	    	terms_accepted = false;
+	    }
+	    activateSubmit();
+	});
+
+	function activateSubmit() {
+		console.log("test_");
+		if ((terms_accepted) && (terms_read) && ($('#student-name').text() != "Student not found." || $('#student-name').text() != "Account already created.")) {
+			$('input[type=submit]').attr("disabled", "false");
+			$('input[type=submit]').removeClass('disable-button');
+		}
+		else {
+			console.log(terms_accepted +" " +terms_read);
+			$('input[type=submit]').attr("disabled", "disabled");
+			$('input[type=submit]').addClass('disable-button');
+		}
+	}
+});
 
 $(document).ready(function () {
 
@@ -82,55 +171,7 @@ $(document).ready(function () {
 	    });
 	}
 
-	$('#account_id').on('input', function() {
-	    var value = $(this).val();
-	    var length = value.toString().length;
-
-	    if(length == 6) {
-	      $.ajax({
-	        method: 'GET',
-	        url: '/students/search',
-	        data: { id: value },
-	        dataType: 'json',
-	        success: function(student) {
-	            // name = camelize(student.stu_full_name);
-	            // crs = student.stu_course;  
-	            // yr = student.stu_year;
-	            // if (name!=null){
-	            //   $('#student-name').text(name);  
-	            //   $('#student-yrcrs').text(yr + " - " + crs);
-	            // }
-	            // else {
-	            //   $('#student-name').text("Student not found.");
-	            // }
-	            
-	            
-	            // if ($('#student-name').text() != "Student not found.") {
-	            //   $('#form button').click();
-	            // }
-	            $('#student-name').text(student[0].name);
-	            $('#student-yrcrs').text(student[0].yr + " - " + student[0].course);
-	            $('#student-school').text(student[0].school);
-
-	            $('#account_name').val(student[0].name);
-	            $('#account_yr').val(student[0].yr);
-	            $('#account_course').val(student[0].course);
-	            $('#account_school').val(student[0].school);
-	          }
-	      });
-	            
-	       
-	    } else {
-		    $('#student-name').text("Student not found.");
-		    $('#student-yrcrs').text("");
-		    $('#student-school').text("");
-
-		    $('#account_name').val("");
-	        $('#account_yr').val("");
-	        $('#account_course').val("");
-	        $('#account_school').val("");
-	    }
-	  }); 
+	
 
   	document.onscroll = scroll;
 

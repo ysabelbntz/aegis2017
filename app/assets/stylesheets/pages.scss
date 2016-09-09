@@ -75,14 +75,14 @@ h5 {
 	padding-top: 50px;
 	padding-bottom: 50px
 }
-	#announcements {
-	}
+	#calendar { font-family: "Source Serif Pro"; }
+	#calendar table { font-family: "Roboto"; }
 	#faq {
 		background: #C7DAE9;
 		h3 {font-family: "Source Serif Pro";}
 		section {
 			margin-top: 30px;
-			margin-bottom:30px;
+			margin-bottom:40px;
 			h4 {
 				font-family: "Roboto";
 				font-weight: 700
@@ -90,6 +90,7 @@ h5 {
 			p {
 				font-family: "Roboto";
 				font-weight: 400;
+				font-size: 1.1em;
 				a {
 					color: $blue;
 					text-decoration: underline;
@@ -97,6 +98,7 @@ h5 {
 				}
 				a:hover {
 					text-decoration:none;
+					background: none;
 				}
 			}
 
