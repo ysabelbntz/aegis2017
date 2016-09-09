@@ -30,6 +30,7 @@ gem 'tzinfo-data'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'puma'
+gem 'seed_dump'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
