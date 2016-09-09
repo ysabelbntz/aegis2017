@@ -1,33 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Events</h1>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     </div>
+     <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'STUDENTS', admins_path, method: :get %></li>
+        <li class="active"><%= link_to 'EVENTS', events_path, method: :get %></li>
+        <li><%= link_to 'ACCOUNTS', accounts_admins_path, method: :get %></li>
+        <li><%= link_to "LOG OUT", destroy_admin_session_path, :method => :delete %></a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Event', new_event_path %>
+<div class="container with-fixed-navbar admins">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= link_to 'New Event', new_event_path, :class => "event-new" %>
+      <br>
+      <br>
+      <table class="table-striped table">
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th colspan="2"></th>
+        </tr>
+        <% @events.each do |event| %>
+          <tr class="event-table">
+            <td><%= event.title %></td>
+            <td><%= event.description %></td>
+            <td><%= event.start_time %></td>
+            <td><%= event.end_time %></td>
+            <td class="right-align"><%= link_to 'Edit', edit_event_path(event), :class => "event-crud" %></td>
+            <td class="right-align"><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }, :class => "event-crud" %></td>
+          </tr>
+        <% end %>
+      </table>
+      <br>
+    </div>
+  </div>
+</div>
+</div>
