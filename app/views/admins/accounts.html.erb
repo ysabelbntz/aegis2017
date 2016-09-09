@@ -14,7 +14,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'STUDENTS', admins_path, method: :get %></li>
+        <li class=""><%= link_to 'DASHBOARD', admins_path, method: :get %></li>
+        <li class=""><%= link_to 'STUDENTS', students_admins_path, method: :get %></li>
         <li class="active"><%= link_to 'ACCOUNTS', accounts_admins_path, method: :get %></li>
         <li><%= link_to "LOG OUT", destroy_admin_session_path, :method => :delete %></a>
         </li>
@@ -43,7 +44,7 @@
         </tr>
         <% @accounts.each do |student| %> 
           <tr>
-            <td class="right-align"><%= student.id %></td>
+            <td class="right-align"><%= student.student_id %></td>
             <td><%= student.name %></td>
             <td><%= student.email %></td>
             <td class="right-align"><%= student.yr %></td>

@@ -7,10 +7,13 @@
 
 .with-fixed-navbar {
 	padding-top: 100px;
-	padding-bottom:200px;
 }
 
 .admins {
 	font-family: "Roboto";
 	font-weight: 400;
+}
+
+em.current {
+	font-weight: bold;
 }
