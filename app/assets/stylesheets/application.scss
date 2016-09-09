@@ -105,3 +105,20 @@ nav {
 .left-align { text-align: left; }
 .center-align { text-align: center; }
 .text-bold { font-weight: 700; }
+
+footer {
+	padding-top: 30px;
+	padding-bottom: 80px;
+	color: #aaaaaa;
+	a {
+		color: #aaaaaa;
+		text-decoration: underline;
+		transition: 0.3s ease;
+	}
+	a:hover {
+		background: none!important;
+		text-decoration: none;
+		color: #aaaaaa;
+	}
+	a:visited { color: #aaaaaa;}
+}
