@@ -2402,16 +2402,22 @@ Student.create!([
   {id: 134463, name: "YANG, CATHERINE FAITH C.", yr: 4, course: "BS MAC", school: "SOM", account: false}
 ])
 Event.create!([
-  {title: "Website Launch", description: "", start_time: "2016-09-12", end_time: "2016-09-12"},
   {title: "SOH Photoshoot Signups", description: "", start_time: "2016-10-03", end_time: "2016-10-03"},
   {title: "SOSS Photoshoot Signups", description: "", start_time: "2016-10-04", end_time: "2016-10-04"},
   {title: "SOSE Photoshoot Signups", description: "", start_time: "2016-10-05", end_time: "2016-10-05"},
   {title: "SOM Photoshoot Signups", description: "", start_time: "2016-10-06", end_time: "2016-10-06"},
   {title: "Free-For-All Photoshoot Signups", description: "", start_time: "2016-10-07", end_time: "2016-10-07"},
   {title: "Group Photoshoot Signups", description: "", start_time: "2016-10-08", end_time: "2016-10-08"},
-  {title: "Photoshoot Proper For Seniors, Super Seniors and Groups", description: "", start_time: "2016-10-17", end_time: "2016-11-18"},
-  {title: "Blasting of Write-ups Guidelines", description: "", start_time: "2016-10-24", end_time: "2016-10-28"},
   {title: "Start of Write-ups Submission", description: "", start_time: "2016-11-01", end_time: "2016-11-01"},
   {title: "Deadline for Write-ups Submission", description: "", start_time: "2016-11-30", end_time: "2016-11-30"},
-  {title: "Online Preview", description: "", start_time: "2017-02-06", end_time: "2017-02-17"}
+  {title: "Group Photoshoot Proper", description: "", start_time: "2016-11-10", end_time: "2016-11-10"},
+  {title: "SOH Photoshoot Proper", description: "", start_time: "2016-10-17", end_time: "2016-10-21"},
+  {title: "SOSE Photoshoot Proper", description: "", start_time: "2016-10-25", end_time: "2016-11-01"},
+  {title: "SOSS Photoshoot Proper", description: "", start_time: "2016-10-19", end_time: "2016-10-26"},
+  {title: "SOM Photoshoot Proper", description: "", start_time: "2016-10-31", end_time: "2016-11-10"},
+  {title: "Group Photoshoot Proper", description: "", start_time: "2016-11-14", end_time: "2016-11-19"},
+  {title: "Group Photoshoot Proper", description: "", start_time: "2016-11-21", end_time: "2016-11-23"},
+  {title: "Blasting of Write-ups Guidelines", description: "", start_time: "2016-10-24", end_time: "2016-10-29"},
+  {title: "Online Preview", description: "", start_time: "2017-02-06", end_time: "2017-02-18"},
+  {title: "Website Launch", description: "", start_time: "2016-09-12", end_time: "2016-09-13"}
 ])
