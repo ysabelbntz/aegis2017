@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 	helper_method :resource_name, :resource, :devise_mapping
 
 	def index
+		@contact = Contact.new
 	end
 
 	def resource_name

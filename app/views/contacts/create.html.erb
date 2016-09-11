@@ -1,0 +1,10 @@
+<div id="home-page">
+	<div class="flex container">
+		<div class="row">
+			<% flash.each do |key, value| %>
+			<h1><%= value %></h1><br><br>
+			<p><%= link_to "Go back", root_path %></p>
+			<% end %>
+		</div>
+	</div>
+</div>

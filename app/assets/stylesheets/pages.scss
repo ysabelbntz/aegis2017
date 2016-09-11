@@ -119,3 +119,34 @@ h5 {
 			margin-left: 10%;
 	}
 
+#new_contact {
+	label {
+		font-family: "Roboto";
+		display: block;
+		font-size: 1.1em;
+	}
+	input[type="text"], input[type="email"],textarea {
+		width:90%;
+		padding: 10px 20px;
+		margin:8px 0;
+		margin-bottom: 20px;
+		box-sizing:border-box;
+		border-radius:0; 
+		background-color:#e6e6e6;
+		box-shadow: none;
+		appearance: none;
+		border: 0;
+		font-family: "Roboto";
+
+		&:focus {
+			border:1px solid $darkerblue;
+		  box-shadow: none;
+		  -webkit-box-shadow: none;
+		  -moz-box-shadow: none;
+		  -moz-transition: none;
+		  -webkit-transition: none;
+		  outline: 0 none;
+		}
+	}
+
+}

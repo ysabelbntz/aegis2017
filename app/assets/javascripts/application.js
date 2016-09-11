@@ -20,7 +20,6 @@
 
 
 $('.registrations.new').ready(function () {
-	console.log("hi");
 	var terms_read = false;
 	var terms_accepted = false;
 	$('#new-account-submit').attr("disabled", "disabled");
@@ -139,9 +138,9 @@ $(document).ready(function () {
             menu = target;
         $target = $(target);
         $('html, body').stop().animate({
-            'scrollTop': $target.offset().top+2
+            'scrollTop': $target.offset().top-100
         }, 500, 'swing', function () {
-            window.location.hash = target;
+            window.location.hash = target-500;
             $(document).on("scroll", onScroll);
         });
     });

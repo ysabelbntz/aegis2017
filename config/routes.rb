@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pages#index'
 
+  match '/contacts', to: 'pages#index', via: 'get'
+  resources "contacts", only: [:new, :create]
+  
   resources :students do
     collection do
       get 'search'

@@ -31,6 +31,7 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'puma'
 gem 'seed_dump'
+gem 'mail_form'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
