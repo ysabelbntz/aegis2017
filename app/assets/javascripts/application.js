@@ -140,8 +140,9 @@ $(document).ready(function () {
         $('html, body').stop().animate({
             'scrollTop': $target.offset().top-100
         }, 500, 'swing', function () {
-            window.location.hash = target-500;
+            window.location.hash = target;
             $(document).on("scroll", onScroll);
+            $(this).parent().addClass('active');
         });
     });
 	

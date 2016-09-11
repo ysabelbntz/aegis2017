@@ -235,16 +235,18 @@
 			<h5><a href="mailto:ateneoaegis2017@gmail.com">ateneoaegis2017@gmail.com</a></h5>
 		</div>
 	</div>
-	<div class="col-md-6">
-		<div class="col-xs-10 col-sm-8">
-		<br>
-		<br>
-			<div class="form-group">
-	          <input type="text" class="form-control" placeholder="Name" style="width:90%;padding: 10px 20px;margin:8px 0;box-sizing:border-box;border-radius:0; background-color:#e6e6e6;">
-	          <input type="text" class="form-control" placeholder="Email" style="width:90%;padding: 10px 20px;margin:8px 0;box-sizing:border-box;border-radius:0; background-color:#e6e6e6;">
-	          <textarea name="comment" placeholder="Message" style="width: 100%;box-sizing:border-box;border:0.1px solid #ccc;padding:12px 20px;margin:8px 0;background-color:#e6e6e6;" rows="15"></textarea>
-	        </div>
-	        <button type="submit" class="btn btn-default" style="background-color:#203053;color:#79ADD2;width:40%;font-weight:bold;border-radius:0;margin:8px 0;">SUBMIT</button>
+	<div class="col-md-6 col-xs-10 col-xs-offset-1 col-sm-offset-0">
+		<div class="col-xs-12 col-sm-8">
+			<%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
+			    <%= f.input :name, label: "", placeholder: "Name" %>
+			    <%= f.input :email, label: "", placeholder: "Email" %>
+			    <%= f.input :message, label: "", placeholder: "Message", :as => :text, rows: 15 %>
+			    <div>
+			      </br>
+			      <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
+			    </div>
+			<% end %>
+			</div>
 		</div>
 	</div>
 </div>
