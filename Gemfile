@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-
+ruby '2.2.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -31,6 +31,7 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'puma'
 gem 'seed_dump'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
