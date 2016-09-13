@@ -25,14 +25,18 @@ $('.registrations.new').ready(function () {
 	$('#new-account-submit').attr("disabled", "disabled");
 	$('#new-account-submit').addClass('disable-button');
 
-	if ($('#account_name').val().length == 0) {
-		$('#student-name').text("Student not found.");
-		$('#student-yrcrs').text("");
-		$('#student-school').text("");
-	} else {
-		$('#student-name').text($('#account_name').val());
-		$('#student-yrcrs').text($('#account_yr').val() + " - " + $('#account_course').val());
-		$('#student-school').text($('#account_school').val());
+	try {
+		if ($('#account_name').val().length == 0) {
+			$('#student-name').text("Student not found.");
+			$('#student-yrcrs').text("");
+			$('#student-school').text("");
+		} else {
+			$('#student-name').text($('#account_name').val());
+			$('#student-yrcrs').text($('#account_yr').val() + " - " + $('#account_course').val());
+			$('#student-school').text($('#account_school').val());
+		}
+	} catch (sign_up_validation) {
+		
 	}
 
 	$('#account_student_id').on('input', function() {
