@@ -4,8 +4,8 @@
 	<title>AEGIS 2017</title>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<link href="<%=image-path("favicon.png")%>" rel="icon" type="image/x-icon" />
-	<link href="<%=image-path("favicon.ico")%>" rel="icon" />
+	<%= favicon_link_tag 'favicon.ico' %>
+	<%= favicon_link_tag 'favicon.png' %>
 
 	<meta property="og:image" content="<%=image_path('loader.png')%>" />
 
