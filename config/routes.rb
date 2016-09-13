@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     end
   end
 
+  match 'accounts/:id' => 'accounts#destroy', :via => :delete, :as => :destroy_account
+
   resources :accounts do
     collection do
       get 'index'

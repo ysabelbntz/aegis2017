@@ -30,6 +30,7 @@
   <div class="row">
     <div class="col-xs-12">
       <h4 class="center-align">Number of accounts: <span class="text-bold"><%=@account_number %></span>/<%= Student.count %></h4>
+      <h4 class="center-align"><%= flash[:notice] %></h4>
     </div>
   </div>
   <div class="row">
@@ -42,6 +43,7 @@
           <th class="right-align">Year</th>
           <th>Course</th>
           <th>School</th>
+          <th></th>
         </tr>
         <% @accounts.each do |student| %> 
           <tr>
@@ -51,6 +53,7 @@
             <td class="right-align"><%= student.yr %></td>
             <td><%= student.course %></td>
             <td><%= student.school %></td>
+            <td><%= link_to "Delete", destroy_account_path(student), method: :delete, data: { confirm: "Are you sure you want to delete the account #{student.student_id}?" }, :class => "event-crud" %></td>
           </tr>
         <% end %>
       </table>
