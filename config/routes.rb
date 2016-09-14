@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'admin_search'
+      post 'reset'
     end
   end
 
