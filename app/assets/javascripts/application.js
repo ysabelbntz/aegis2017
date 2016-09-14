@@ -31,10 +31,14 @@ $('.admins.students').ready(function(){
 	        data: { id: value },
 	        dataType: 'json',
 	        success: function(student) {
-            	$('#student-name').text(student.name);	
-	            $('#student-yrcrs').text(student.yr + " - " + student.course);
-	            $('#student-school').text(student.school);
-	            $('#student-account').text(student.account);
+	        	if (student != null) {
+	            	$('#student-name').text(student.name);	
+		            $('#student-yrcrs').text(student.yr + " - " + student.course);
+		            $('#student-school').text(student.school);
+		            $('#student-account').text(student.account);
+		        } else {
+		        	$('#student-name').text("Not found.");	
+		        }
 	          }
 	      });   
 	    } 
@@ -59,11 +63,15 @@ $('.admins.accounts').ready(function(){
 	        data: { id: value },
 	        dataType: 'json',
 	        success: function(student) {
-            	$('#student-name').text(student.name);	
-	            $('#student-yrcrs').text(student.yr + " - " + student.course);
-	            $('#student-school').text(student.school);
-	            $('#student-account').text(student.account);
-	            $('#student-email').text(student.email);
+	        	if (student != null){
+	            	$('#student-name').text(student.name);	
+		            $('#student-yrcrs').text(student.yr + " - " + student.course);
+		            $('#student-school').text(student.school);
+		            $('#student-account').text(student.account);
+		            $('#student-email').text(student.email);
+	        	} else {
+	        		$('#student-name').text("Not found");
+	        	}
 	          }
 	      });   
 	    } 

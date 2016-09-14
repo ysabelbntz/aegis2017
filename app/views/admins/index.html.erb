@@ -68,16 +68,20 @@
       <h3 class="center-align">Errors Summary</h3>
       <table class="table table-striped">
         <tr>
-          <th>Empty accounts: <%=@error_accounts.count%></th>
+          <td>Empty accounts: <%=@error_accounts.count%></td>
           <td>
             <% @error_accounts.each do |account|%>
-              <%= account %> <br/>
+              <%= account.student_id %> <br/>
             <% end %>    
           </td>
         </tr>
         <tr>
-          <th>Student - account</th>
-          <td><%=@error_students %></td>
+          <td>Student - account: <%=@error_students %></td>
+          <td>
+            <% @a.each do |student| %>
+              <%= student.id %> <br/>
+            <% end %>
+          </td>
         </tr>
       </table>
       
