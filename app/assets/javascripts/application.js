@@ -19,6 +19,65 @@
 //= require fullcalendar
 
 
+$('.admins.students').ready(function(){
+	$('#search_student').on('input', function() {
+	    var value = $(this).val();
+	    var length = value.toString().length;
+	    
+	    if(length == 6) {
+	      $.ajax({
+	        method: 'GET',
+	        url: '/students/admin_search',
+	        data: { id: value },
+	        dataType: 'json',
+	        success: function(student) {
+            	$('#student-name').text(student.name);	
+	            $('#student-yrcrs').text(student.yr + " - " + student.course);
+	            $('#student-school').text(student.school);
+	            $('#student-account').text(student.account);
+	          }
+	      });   
+	    } 
+	    else {
+	    	$('#student-name').text("");	
+	        $('#student-yrcrs').text("");
+	        $('#student-school').text("");
+	        $('#student-account').text("");
+	    }
+	  }); 
+});
+
+$('.admins.accounts').ready(function(){
+	$('#search_account').on('input', function() {
+	    var value = $(this).val();
+	    var length = value.toString().length;
+
+	    if(length == 6) {
+	      $.ajax({
+	        method: 'GET',
+	        url: '/accounts/search',
+	        data: { id: value },
+	        dataType: 'json',
+	        success: function(student) {
+            	$('#student-name').text(student.name);	
+	            $('#student-yrcrs').text(student.yr + " - " + student.course);
+	            $('#student-school').text(student.school);
+	            $('#student-account').text(student.account);
+	            $('#student-email').text(student.email);
+	          }
+	      });   
+	    } 
+	    else {
+	    	$('#student-name').text("");	
+	        $('#student-yrcrs').text("");
+	        $('#student-school').text("");
+	        $('#student-account').text("");
+	        $('#student-email').text("");
+	    }
+	  }); 
+});
+
+
 $('.registrations.new').ready(function () {
 	var terms_read = false;
 	var terms_accepted = false;

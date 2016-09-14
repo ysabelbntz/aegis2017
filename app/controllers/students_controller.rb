@@ -16,4 +16,15 @@ class StudentsController < ApplicationController
 			end
 		end
 	end
+
+	def admin_search 
+		idparams = params[:id]
+		@student=Student.where(id: idparams).first
+
+		
+		respond_to do |format|
+			format.html
+			format.json {render json: @student}
+		end
+	end
 end

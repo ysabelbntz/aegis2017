@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :students do
     collection do
       get 'search'
+      get 'admin_search'
     end
   end
 
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   resources :accounts do
     collection do
       get 'index'
+      get 'search'
     end
   end
 
