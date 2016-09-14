@@ -13,14 +13,17 @@ class AdminsController < ApplicationController
 		@sose_accounts = Account.where(school: "SOSE").count
 		@soss_accounts = Account.where(school: "SOSS").count
 		@accounts = @soh_accounts + @som_accounts + @sose_accounts + @soss_accounts
+
+		@error_accounts = Account.where(name: "")
+		@error_students = Student.where(account: true).count - @accounts
 	end
 
 	def students
-		@students = Student.all.order('id ASC').paginate(:page => params[:page], :per_page => 30)
+		@students = Student.all.order('id ASC').paginate(:page => params[:page], :per_page => 90)
 	end
 
 	def accounts
-		@accounts = Account.all.order('student_id ASC').paginate(:page => params[:page], :per_page => 30)
+		@accounts = Account.all.order('student_id ASC').paginate(:page => params[:page], :per_page => 90)
 
 		@account_number = Account.count
 	end
