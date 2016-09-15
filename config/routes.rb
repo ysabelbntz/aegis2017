@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'search'
       get 'admin_search'
       post 'reset'
+      post 'transfer'
     end
   end
 

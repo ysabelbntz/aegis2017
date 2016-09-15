@@ -76,6 +76,11 @@
           </td>
         </tr>
         <tr>
+          <td>Students with accounts: <%= @true_accounts %></td>
+          <td>  
+          </td>
+        </tr>
+        <tr>
           <td>Student - account: <%=@error_students %></td>
           <td class="left-align">
             <% @a.each do |student| %>
@@ -84,10 +89,16 @@
           </td>
         </tr>
       </table>
-      <h3 class="center-align">Reset Student record</h3>
+      <h3 class="center-align">Reset Student Record</h3>
       <form action="/students/reset" method="POST">
         <input type="number" name="id">
         <button type="submit">Delete</button>
+      </form>
+
+      <h3 class="center-align">Transfer Student Details</h3>
+      <form action="/students/transfer" method="POST">
+        <input type="number" name="id">
+        <button type="submit">Transfer</button>
       </form>
     </div>
   </div>

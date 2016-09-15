@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AdminsController < ApplicationController
 	before_filter :authenticate_admin!
 
@@ -13,9 +14,11 @@ class AdminsController < ApplicationController
 		@sose_accounts = Account.where(school: "SOSE").count
 		@soss_accounts = Account.where(school: "SOSS").count
 		@accounts = @soh_accounts + @som_accounts + @sose_accounts + @soss_accounts
-
+		
+		@true_accounts = Student.where(account:true).count
 		@error_accounts = Account.where(name: "")
-		@error_students = Student.where(account: true).count - @accounts
+		@error_students = @true_accounts - @accounts
+
 
 		@a = Student.where(account: true).where.not(id: Account.select("student_id"))
 	end

@@ -67,7 +67,7 @@
         <% @students.each do |student| %> 
           <tr class=<%=student.account ? "success":"warning" %>>
             <td class="right-align"><%= student.id %></td>
-            <td><%= student.name %></td>
+            <td><%= student.name.html_safe %></td>
             <td class="right-align"><%= student.yr %></td>
             <td><%= student.course %></td>
             <td><%= student.school %></td>

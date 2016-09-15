@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+	# encoding: utf-8
 	respond_to :json, :html
 	skip_before_action :verify_authenticity_token
 
@@ -35,5 +36,20 @@ class StudentsController < ApplicationController
 		@student.update_attributes(account: false)
 		flash[:notice] = "Student #{@student.id} account set to false."
 		redirect_to :back
+	end
+
+	def transfer
+		@student = Student.find(params[:id])
+		@account = Account.where(student_id: params[:id]).first
+
+		@account.name = @student.name
+		@account.yr = @student.yr
+		@account.course = @student.course
+		@account.school = @student.school
+
+		@account.save(validate: false)
+
+		flash[:notice] = "Student #{@student.id} account details restored."
+		redirect_to :back		
 	end
 end

@@ -9,7 +9,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:image" content="<%=image_path('loader.png')%>" />
-
+	<meta charset="UTF-8">
 	<meta property="og:description" content="The official college yearbook of the Ateneo de Manila University." />
 
 	<meta property="og:url" content="http://aegis2017.com" />
@@ -18,7 +18,7 @@
 	<%= csrf_meta_tags %>
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
-
+<%# encoding: utf-8%>
 <%= yield %>
 	<footer>
 	 <div class="container">
