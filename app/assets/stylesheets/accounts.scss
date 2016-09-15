@@ -71,9 +71,18 @@
 	}
 
 #account-details {
-	border-right:1px solid black;
-	min-height: 50vh;
+	
 	font-family: "Roboto";
 	h3,h2 { font-weight: 700; }
 	h2 {text-transform:capitalize;}
+}
+
+@media (max-width: 767px){
+
+}
+@media (min-width: 768px) {
+	#account-details {
+		border-right:1px solid black;
+		min-height: 50vh;
+	}	
 }
