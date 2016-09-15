@@ -76,14 +76,22 @@
           </td>
         </tr>
         <tr>
-          <td>Students with accounts: <%= @true_accounts %></td>
+          <td>Students records with accounts: <%= @true_accounts %></td>
           <td>  
           </td>
         </tr>
         <tr>
-          <td>Student - account: <%=@error_students %></td>
+          <td>Student - Account: </td>
           <td class="left-align">
             <% @a.each do |student| %>
+              <%= student.id %> <br/>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>Account - Student: </td>
+          <td class="left-align">
+            <% @b.each do |student| %>
               <%= student.id %> <br/>
             <% end %>
           </td>

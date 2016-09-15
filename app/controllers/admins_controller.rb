@@ -17,10 +17,10 @@ class AdminsController < ApplicationController
 		
 		@true_accounts = Student.where(account:true).count
 		@error_accounts = Account.where(name: "")
-		@error_students = @true_accounts - @accounts
-
 
 		@a = Student.where(account: true).where.not(id: Account.select("student_id"))
+		@b = Account.where.not(student_id: Student.select(:id).where(account:true))
+
 	end
 
 	def students
