@@ -71,10 +71,13 @@
 	}
 
 #account-details {
-	
 	font-family: "Roboto";
 	h3,h2 { font-weight: 700; }
-	h2 {text-transform:capitalize;}
+	h2 {text-transform:uppercase;}
+}
+
+#account-sign-ups {
+	h3 {text-transform: uppercase;}
 }
 
 @media (max-width: 767px){
@@ -85,4 +88,17 @@
 		border-right:1px solid black;
 		min-height: 50vh;
 	}	
+}
+
+.accounts.sign_ups table{
+	margin-top: 30px;
+	.success {
+		background: #dff0d8;
+	}
+	.warning {
+		background: #fcf8e3;
+	}
+	.danger {
+		background: #f2dede;
+	}
 }

@@ -4,6 +4,7 @@ class Account < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:student_id]
   belongs_to :timeslot
+  belongs_to :groupshot
   validates_uniqueness_of :email, :student_id
   
   def self.find_for_database_authentication(warden_conditions)

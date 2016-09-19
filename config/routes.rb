@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get 'index'
       get 'accounts'
       get 'students'
+      get 'timeslots'
     end
   end
 
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
     collection do
       get 'index'
       get 'search'
+      get 'sign_ups'
     end
   end
 

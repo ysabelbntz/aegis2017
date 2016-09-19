@@ -20,7 +20,6 @@ class AdminsController < ApplicationController
 
 		@a = Student.where(account: true).where.not(id: Account.select("student_id"))
 		@b = Account.where.not(student_id: Student.select(:id).where(account:true))
-
 	end
 
 	def students
@@ -31,5 +30,13 @@ class AdminsController < ApplicationController
 		@accounts = Account.all.order('student_id ASC').paginate(:page => params[:page], :per_page => 60)
 
 		@account_number = Account.count
+	end
+
+	def timeslots
+		@dates = []
+		Timeslot.distinct(:date).order(:date).pluck(:date).each do |timeslot|
+			instance_variable_set "@slots_#{timeslot.to_s.underscore}".to_sym, Timeslot.where(date: timeslot)
+			@dates << "#{timeslot.to_s.underscore}"
+		end
 	end
 end
