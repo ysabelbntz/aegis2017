@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
 
 	def index
-
+		@events = Event.all
 	end	
 
 	def sign_ups

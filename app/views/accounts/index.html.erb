@@ -38,7 +38,12 @@
       </div>
     </div>
     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-8">
-      <h5>Hi! Thank you for signing up for an account. The yearbook signups will be up here soon. Stay tuned for announcements.</h5>
+      <h3>Dates to Remember</h3>
+      <% @events.each do |event| %>
+        <ul>
+          <li><%= event.title + ": " %><% if event.start_time == event.end_time %><%= event.start_time %><% else %><%= event.start_time.to_s + " to " + event.end_time.to_s %><% end %></li>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>
