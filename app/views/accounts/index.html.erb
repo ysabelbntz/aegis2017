@@ -41,7 +41,7 @@
       <h3>Dates to Remember</h3>
       <% @events.each do |event| %>
         <ul>
-          <li><%= event.title + ": " %><% if event.start_time == event.end_time %><%= event.start_time %><% else %><%= event.start_time.to_s + " to " + event.end_time.to_s %><% end %></li>
+          <li><%= event.title + ": " %><% if event.start_time == event.end_time %><%= event.start_time.strftime("%B %d, %Y") %><% else %><%= event.start_time.strftime("%B %d, %Y") + " to " + event.end_time.strftime("%B %d, %Y") %><% end %></li>
         </ul>
       <% end %>
     </div>
