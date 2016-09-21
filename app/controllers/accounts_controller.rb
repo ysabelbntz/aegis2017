@@ -1,7 +1,8 @@
 class AccountsController < ApplicationController
 
 	def index
-		@events = Event.all
+		school = current_account.school
+		@events = Event.where(description: ["All", school]).order(:start_time)
 	end	
 
 	def sign_ups
