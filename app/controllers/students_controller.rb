@@ -33,8 +33,12 @@ class StudentsController < ApplicationController
 
 	def reset
 		@student = Student.find(params[:id])
-		@student.update_attributes(account: false)
-		flash[:notice] = "Student #{@student.id} account set to false."
+		if @student.account == false
+			@student.update_attributes(account: true)
+		else 
+			@student.update_attributes(account: false)
+		end
+		flash[:notice] = "Student #{@student.id} account set to #{@student.account}."
 		redirect_to :back
 	end
 
