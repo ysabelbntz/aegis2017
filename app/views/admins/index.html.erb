@@ -36,31 +36,37 @@
           <th >School</th>
           <th class="right-align">Number of students</th>
           <th class="right-align">Number of accounts</th>
+          <th class="right-align">Percentage of sign ups</th>
         </tr>
         <tr>
           <td>SOH</td>
           <td class="right-align"><%=@soh_students%></td>
           <td class="right-align"><%=@soh_accounts%></td>
+          <td class="right-align"><%=(@soh_accounts/@soh_students).round(2)%></td>
         </tr>
         <tr>
           <td>SOM</td>
           <td class="right-align"><%=@som_students%></td>
           <td class="right-align"><%=@som_accounts%></td>
+          <td class="right-align"><%=(@som_accounts/@som_students).round(2)%></td>
         </tr>
         <tr>
           <td>SOSE</td>
           <td class="right-align"><%=@sose_students%></td>
           <td class="right-align"><%=@sose_accounts%></td>
+          <td class="right-align"><%=(@sose_accounts/@sose_students).round(2)%></td>
         </tr>
         <tr>
           <td>SOSS</td>
           <td class="right-align"><%=@soss_students%></td>
           <td class="right-align"><%=@soss_accounts%></td>
+          <td class="right-align"><%=(@soss_accounts/@soss_students).round(2)%></td>
         </tr>
         <tr>
           <td class="text-bold">Sum</td>
           <td class="right-align text-bold"><%=@students%></td>
           <td class="right-align text-bold"><%=@accounts%></td>
+          <td class="right-align text-bold"><%=(@accounts/@students).round(2)%></td>
         </tr>
       </table>
       
