@@ -2422,7 +2422,7 @@
 # #   {title: "Website Launch", description: "", start_time: "2016-09-12", end_time: "2016-09-13"}
 # # ])
 
-Student.create!([{id: 121554, name: "Rosstyn Lyan C. Fallorina", yr: 4, course: "AB DS", school: "SOSS"}])
+Student.create!([{id: 121554, name: "Rosstyn Lyan C. Fallorina", yr: 4, course: "AB DS", school: "SOSS", type: nil}])
 
 Timeslot.create!([
   {start_time: "8:00 AM", end_time: "9:00 AM", date: "2016-11-16", slots: 18, type: "Groupshot"},
