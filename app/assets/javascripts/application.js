@@ -13,10 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require bootstrap.js
 //= require turbolinks
-//= require_tree .
 //= require moment 
 //= require fullcalendar
+//= require_tree .
+
 
 
 $('.admins.students').ready(function(){

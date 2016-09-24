@@ -32,6 +32,8 @@ gem 'momentjs-rails'
 gem 'puma'
 gem 'seed_dump'
 gem 'mail_form'
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

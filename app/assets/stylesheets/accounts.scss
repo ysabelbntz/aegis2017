@@ -106,3 +106,21 @@
 #account-details {
 	padding-right: 20px;
 }
+
+.sign_ups {
+	.btn {
+		color: $darkerblue;
+	}
+}
+
+.confirmation-slip {
+	font-family: "Roboto";
+	h4 {
+		line-height: 2em!important;
+		text-indent: 50px;
+	}
+	.lines {margin-top: 80px;}
+	.forms {
+		border-top: 1px solid black;
+	}
+}

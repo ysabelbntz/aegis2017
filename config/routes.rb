@@ -36,6 +36,9 @@ Rails.application.routes.draw do
       get 'index'
       get 'search'
       get 'sign_ups'
+      get 'slot'
+      get 'slip'
+      post 'sign_up'
     end
   end
 

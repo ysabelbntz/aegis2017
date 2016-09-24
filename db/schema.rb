@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919102210) do
+ActiveRecord::Schema.define(version: 20160924085436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +33,14 @@ ActiveRecord::Schema.define(version: 20160919102210) do
     t.inet     "last_sign_in_ip"
     t.string   "school"
     t.integer  "student_id"
+    t.integer  "timeslot_id"
+    t.integer  "groupshot_id"
   end
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true, using: :btree
   add_index "accounts", ["student_id"], name: "index_accounts_on_student_id", using: :btree
+  add_index "accounts", ["timeslot_id"], name: "index_accounts_on_timeslot_id", using: :btree
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -90,6 +93,8 @@ ActiveRecord::Schema.define(version: 20160919102210) do
     t.date    "date"
     t.integer "slots"
     t.string  "type"
+    t.string  "group_name"
   end
 
+  add_foreign_key "accounts", "timeslots"
 end
