@@ -69,6 +69,21 @@ class AccountsController < ApplicationController
 		
 	end
 
+	def photoshoot
+		@account = Account.where(student_id: params[:id]).first
+		if @account.timeslot_id.present?
+			@timeslot = Timeslot.find(@account.timeslot_id)
+			@timeslot.slots = @timeslot.slots + 1
+			@timeslot.save
+
+			@account.timeslot_id = nil
+			@account.save(validate: false)
+
+			flash[:notice] = "Account #{@account.student_id} timeslot reset."
+			redirect_to :back
+		end
+	end
+
 	def slip
 		@timeslot = Timeslot.find(current_account.timeslot_id)
 		respond_to do |format|

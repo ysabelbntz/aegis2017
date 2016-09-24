@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       get 'slot'
       get 'slip'
       post 'sign_up'
+      post 'photoshoot'
     end
   end
 
