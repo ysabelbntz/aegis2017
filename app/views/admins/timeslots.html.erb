@@ -97,7 +97,7 @@
                 <td class="right-align"><%= slot.slots%> </td>
                 <td>
                   <% Account.where(timeslot_id: slot.id).each do |account | %>
-                    <%= account.student_id.to_s + ", " + account.name + ", " + account.yr.to_s + " - " + account.course %>
+                    <%= account.student_id.to_s + ", " + account.name + ", " + account.yr.to_s + " - " + account.course %><br>
                   <% end %>
                 </td>
               </tr>

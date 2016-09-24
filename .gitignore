@@ -48,3 +48,5 @@ bower.json
 
 
 .DS_Store
+
+db/migrate/20160924094203_add_type_to_timeslots.rb
