@@ -27,7 +27,8 @@
 	  <%= devise_error_messages! %>
 
 	  <div class="field">
-	    <%= f.text_field :student_id, as: "number", autofocus: true, placeholder: "ID Number" %>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
 	  </div>
 
 	  <div class="actions">
