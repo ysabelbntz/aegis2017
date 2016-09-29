@@ -4,19 +4,19 @@ class RegistrationsController < Devise::RegistrationsController
 	# 	redirect_to root_path
 	# end
 
-	def create
-		super do
-			Student.find(params[:account][:student_id]).update(account: true)	
-		end
+	# def create
+		# super do
+			# Student.find(params[:account][:student_id]).update(account: true)	
+		# end
 
 		# redirect_to root_path
-	end
+	# end
 
 	
 	def update 
-		@account = Account.where(email: params[:email]).first
-		@account.password = params[:password]
-		@account.password_confirmation = params[:password_confirmation]
+		# @account = Account.where(email: params[:email]).first
+		# @account.password = params[:password]
+		# @account.password_confirmation = params[:password_confirmation]
 	end
 
 	
