@@ -113,10 +113,19 @@ h5 {
 			color:#111d37;
 		}
 	}
-	.reminder-photo{
+	@media secreen and (min-width 300px){
+		.reminder-photo{
+			max-height: 320px;
+			margin-left:0;
+		}
+	}
+	@media secreen and (min-width 800px){
+		.reminder-photo{
 			max-height: 380px;
 			margin-left: 10%;
+		}
 	}
+
 
 #new_contact {
 	label {
