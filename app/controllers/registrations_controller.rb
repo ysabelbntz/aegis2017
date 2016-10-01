@@ -1,16 +1,16 @@
 class RegistrationsController < Devise::RegistrationsController
 	skip_before_filter :verify_authenticity_token, :only => :create
-	# def new 
-	# 	redirect_to root_path
-	# end
+	def new 
+		redirect_to root_path
+	end
 
-	# def create
+	def create
 		# super do
-			# Student.find(params[:account][:student_id]).update(account: true)	
+		# 	Student.find(params[:account][:student_id]).update(account: true)	
 		# end
 
-		# redirect_to root_path
-	# end
+		redirect_to root_path
+	end
 
 	
 	def update 
