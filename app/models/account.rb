@@ -7,6 +7,10 @@ class Account < ActiveRecord::Base
   belongs_to :groupshot
   # validates_uniqueness_of :email, :student_id
   
+  def to_s
+    "#{self.student_id}, #{self.name}, #{self.yr} - #{self.course}"
+  end
+
   def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
       #raise conditions.inspect

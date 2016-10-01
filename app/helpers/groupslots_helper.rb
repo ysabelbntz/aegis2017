@@ -1,0 +1,2 @@
+module GroupslotsHelper
+end

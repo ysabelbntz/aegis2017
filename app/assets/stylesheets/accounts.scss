@@ -90,7 +90,7 @@
 	}	
 }
 
-.accounts.sign_ups table{
+.accounts.sign_ups table, .accounts.group_signups table{
 	margin-top: 30px;
 	.success {
 		background: #dff0d8;
@@ -101,15 +101,56 @@
 	.danger {
 		background: #f2dede;
 	}
+	form input, button {
+		font-weight: 700;
+		font-family: "Roboto";
+	}
+	
 }
 
 #account-details {
 	padding-right: 20px;
 }
 
-.sign_ups {
+.sign_ups, .group_signups {
 	.btn {
 		color: $darkerblue;
+	}
+	h4 {font-family: "Roboto";}
+
+	.modal-body {
+		input {
+			font-size:1.5em;
+			font-family: "Roboto";
+			width: 100%;
+			border: 1px solid $darkerblue;
+		}
+
+		button[type="submit"] {
+			display: block;
+			margin-top: 10px;
+			margin-left: auto;
+			margin-right: auto;
+			background-color:$darkerblue;
+			color:#79ADD2;
+			font-weight:bold;
+			border-radius:0;
+			font-size: 1.3em;
+			padding: 10px 20px;
+			box-shadow: none;
+			appearance: none;
+			border: none;
+			font-family: "Roboto";
+			transition: 0.3s ease;
+			&.disable-button {
+				background:grey;
+				color: white;
+				&:hover {background-color: grey;}
+			}
+			&:hover {
+				background-color: $blue;
+			}
+		}
 	}
 }
 

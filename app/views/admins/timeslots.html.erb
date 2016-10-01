@@ -76,6 +76,26 @@
             <td class="right-align text-bold"><%= @sum %></td>
           </tr>
         <% end %>
+        <% @dates_g.each do |date| %>
+          <tr>
+            <td class="right-align text-bold"><%= Date.parse(date.dasherize).strftime("%a, %b %d") %></td>
+            <td>
+            Group</td>
+            <% @sum = 0%>
+            <% instance_variable_get("@slots_#{date}").order(:start_time).each do |slot| %>
+              <% @sum = @sum + slot.slots %>
+              <% if slot.slots >= 6 %>
+                <% @status = "success" %>
+              <% elsif slot.slots < 6 && slot.slots > 0 %>
+                <% @status = "warning" %>
+              <% elsif slot.slots == 0 %>
+                <% @status = "danger" %>
+              <% end %>
+              <td class="right-align <%= @status %>"><%= slot.slots %></td>
+            <% end %>
+            <td class="right-align text-bold"><%= @sum %></td>
+          </tr>
+        <% end %>
       </table>
     </div>
 
@@ -97,7 +117,31 @@
                 <td class="right-align"><%= slot.slots%> </td>
                 <td>
                   <% Account.where(timeslot_id: slot.id).each do |account | %>
-                    <%= account.student_id.to_s + ", " + account.name + ", " + account.yr.to_s + " - " + account.course %><br>
+                    <%= account.to_s %><br>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      <% end %>
+
+      <% @dates_g.each do |date| %>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+          <table class="table">
+            <h5 class="center-align text-bold"><%= Date.parse(date.dasherize).strftime("%a, %b %d")%></h5>
+            <tr>
+              <th>Time</th>
+              <th class="right-align">Slots</th>
+              <th>Groups</th>  
+            </tr>
+            <% instance_variable_get("@slots_#{date}").order(:start_time).each do |slot| %>
+              <tr>
+                <td><%= slot.start_time + " - " + slot.end_time %></td>
+                <td class="right-align"><%= slot.slots%> </td>
+                <td>
+                  <% Groupslot.where(groupshot_id: slot.id).each do |group | %>
+                    <%= group.group_name + " c/o " + Account.where(student_id: group.student_id).first.to_s %><br>
                   <% end %>
                 </td>
               </tr>

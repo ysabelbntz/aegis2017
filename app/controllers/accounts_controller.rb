@@ -6,6 +6,18 @@ class AccountsController < ApplicationController
 		@events = Event.where(description: ["All", school]).order(:start_time)
 	end	
 
+	def group_signups
+		@checkgroupslot = Groupslot.where(student_id: current_account.student_id)
+		if @checkgroupslot.count > 0
+			@has_groupshot = true
+			@checkgroupslot = @checkgroupslot.first
+			@timeslot = Groupshot.find(@checkgroupslot.groupshot_id)
+		else
+			@slots = Groupshot.all.order(:date).order(:start_time)
+			@dates = ["2016-11-16", "2016-11-17", "2016-11-18", "2016-11-19", "2016-11-21", "2016-11-22", "2016-11-23"]
+		end
+	end
+
 	def sign_ups
 		if current_account.timeslot_id.present? 
 			@timeslot = Timeslot.find(current_account.timeslot_id)
@@ -47,11 +59,6 @@ class AccountsController < ApplicationController
 	    end
 	end
 
-	def slot
-		
-
-	end
-
 	def sign_up
 		@timeslot = Timeslot.find(params[:format])
 
@@ -63,10 +70,31 @@ class AccountsController < ApplicationController
 
 			redirect_to sign_ups_accounts_path
 		elsif @timeslot.slots == 0
-			flash[:notice] = "Slot already taken."
+			flash[:alert] = "Slot already taken."
 			redirect_to sign_ups_accounts_path
 		end
 		
+	end
+
+	def group_signup
+		@timeslot = Timeslot.find(params[:slot_id])
+
+		if @timeslot.slots > 0 
+			@groupslot = Groupslot.new
+			@groupslot.student_id = current_account.student_id
+			@groupslot.groupshot_id = params[:slot_id]
+			@groupslot.group_name = params[:group_name]
+			@groupslot.save
+
+			@timeslot.slots = @timeslot.slots - 1
+			@timeslot.save
+
+			redirect_to group_signups_accounts_path
+		elsif @timeslot.slots == 0
+			flash[:alert] = "Slot already taken."
+			redirect_to group_signups_accounts_path
+		end
+
 	end
 
 	def photoshoot
@@ -93,6 +121,27 @@ class AccountsController < ApplicationController
 	          layout: 'pdf.html.erb',
 	          debug: true,
 	          template: 'accounts/slip.pdf.erb',
+	          show_as_html: params[:debug].present?,
+	          margin:  {   top:               10,                     # default 10 (mm)
+	                    bottom:            10,
+	                    left:              10,
+	                    right:             10 }
+	      end
+	    end
+	end
+
+	def groupslip
+		@groupslot = Groupslot.where(student_id: current_account.student_id).first
+		@timeslot = Groupshot.find(@groupslot.groupshot_id)
+
+
+		respond_to do |format|
+	      format.html
+	      format.pdf do
+	        render pdf: "group_confirmation_slip",
+	          layout: 'pdf.html.erb',
+	          debug: true,
+	          template: 'accounts/groupslip.pdf.erb',
 	          show_as_html: params[:debug].present?,
 	          margin:  {   top:               10,                     # default 10 (mm)
 	                    bottom:            10,

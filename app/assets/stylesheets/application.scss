@@ -124,7 +124,7 @@ footer {
 	a:visited { color: #aaaaaa;}
 }
 
-form input[type="submit"] {
+form input[type="submit"], form button[type="submit"] {
 	background-color:$darkerblue;
 	color:#79ADD2;
 	font-weight:bold;

@@ -20,6 +20,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :groupslots do
+    collection do
+      post 'reset'
+    end
+  end
+
   resources :admins do
     collection do
       get 'index'
@@ -36,8 +42,11 @@ Rails.application.routes.draw do
       get 'index'
       get 'search'
       get 'sign_ups'
+      get 'group_signups'
+      post 'group_signup'
       get 'slot'
       get 'slip'
+      get 'groupslip'
       post 'sign_up'
       post 'photoshoot'
     end
