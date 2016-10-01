@@ -77,4 +77,13 @@ class Account < ActiveRecord::Base
     end
 
     # create_or_update comes from persistence.rb
+
+    def self.to_csv(options = {})
+      CSV.generate(options) do |csv|
+        csv << column_names
+        all.each do |account|
+          csv << account.attributes.values_at(*column_names)
+        end
+      end
+    end
 end
