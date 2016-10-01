@@ -11,6 +11,52 @@ class Account < ActiveRecord::Base
     "#{self.student_id}, #{self.name}, #{self.yr} - #{self.course}"
   end
 
+  # def active_for_authentication?
+  #   super and self.can_login
+  # end
+
+  # def can_login
+  #   @SOHstart = Time.new(2016, 10, 3, 7)
+  #   @SOHend = Time.new(2016, 10, 3, 23)
+
+  #   @SOSSstart = Time.new(2016, 10, 4, 7)
+  #   @SOSSend = Time.new(2016, 10, 4, 23)
+
+  #   @SOSEstart = Time.new(2016, 10, 5, 7)
+  #   @SOSEend = Time.new(2016, 10, 5, 23)
+
+  #   @SOMstart = Time.new(2016, 10, 6, 7)
+  #   @SOMend = Time.new(2016, 10, 6, 23)
+
+  #   case self.school
+  #   when "SOH" 
+  #     if Time.current.between?(@SOHstart, @SOHend)
+  #       return true
+  #     else
+  #       return false
+  #     end
+  #   when "SOSS"
+  #     if Time.current.between?(@SOSSstart, @SOSSend)
+  #       return true
+  #     else
+  #       return false
+  #     end
+  #   when "SOSE"
+  #     if Time.current.between?(@SOSEstart, @SOSEend)
+  #       return true
+  #     else
+  #       return false
+  #     end
+  #   when "SOM"
+  #     if Time.current.between?(@SOMstart, @SOMend)
+  #       return true
+  #     else
+  #       return false
+  #     end
+  #   end
+  # end
+
+
   def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
       #raise conditions.inspect
