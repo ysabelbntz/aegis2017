@@ -15,6 +15,10 @@ class Account < ActiveRecord::Base
   #   super and self.can_login
   # end
 
+  # def inactive_message
+  #  'You may not log in.'
+  # end
+
   # def can_login
   #   @SOHstart = Time.new(2016, 10, 3, 7)
   #   @SOHend = Time.new(2016, 10, 3, 23)
