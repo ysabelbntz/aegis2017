@@ -43,9 +43,15 @@ class AdminsController < ApplicationController
 
 	def timeslots
 		@dates = []
-		Timeslot.distinct(:date).order(:date).pluck(:date).each do |timeslot|
+		@dates_g = []
+		Timeslot.where(type: nil).distinct(:date).order(:date).pluck(:date).each do |timeslot|
 			instance_variable_set "@slots_#{timeslot.to_s.underscore}".to_sym, Timeslot.where(date: timeslot)
 			@dates << "#{timeslot.to_s.underscore}"
+		end
+
+		Groupshot.distinct(:date).order(:date).pluck(:date).each do |timeslot|
+			instance_variable_set "@slots_#{timeslot.to_s.underscore}".to_sym, Timeslot.where(date: timeslot)
+			@dates_g << "#{timeslot.to_s.underscore}"
 		end
 	end
 end
