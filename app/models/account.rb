@@ -34,25 +34,25 @@ class Account < ActiveRecord::Base
 
     case self.school
     when "SOH" 
-      if Time.now.between?(@SOHstart, @SOHend)
+      if Time.current.in_time_zone('Hong Kong').between?(@SOHstart, @SOHend)
         return true
       else
         return false
       end
     when "SOSS"
-      if Time.now.between?(@SOSSstart, @SOSSend)
+      if Time.current.in_time_zone('Hong Kong').between?(@SOSSstart, @SOSSend)
         return true
       else
         return false
       end
     when "SOSE"
-      if Time.now.between?(@SOSEstart, @SOSEend)
+      if Time.current.in_time_zone('Hong Kong').between?(@SOSEstart, @SOSEend)
         return true
       else
         return false
       end
     when "SOM"
-      if Time.now.between?(@SOMstart, @SOMend)
+      if Time.current.in_time_zone('Hong Kong').between?(@SOMstart, @SOMend)
         return true
       else
         return false
