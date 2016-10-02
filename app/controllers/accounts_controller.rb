@@ -6,17 +6,17 @@ class AccountsController < ApplicationController
 		@events = Event.where(description: ["All", school]).order(:start_time)
 	end	
 
-	def group_signups
-		@checkgroupslot = Groupslot.where(student_id: current_account.student_id)
-		if @checkgroupslot.count > 0
-			@has_groupshot = true
-			@checkgroupslot = @checkgroupslot.first
-			@timeslot = Groupshot.find(@checkgroupslot.groupshot_id)
-		else
-			@slots = Groupshot.all.order(:date).order(:start_time)
-			@dates = ["2016-11-16", "2016-11-17", "2016-11-18", "2016-11-19", "2016-11-21", "2016-11-22", "2016-11-23"]
-		end
-	end
+	# def group_signups
+	# 	@checkgroupslot = Groupslot.where(student_id: current_account.student_id)
+	# 	if @checkgroupslot.count > 0
+	# 		@has_groupshot = true
+	# 		@checkgroupslot = @checkgroupslot.first
+	# 		@timeslot = Groupshot.find(@checkgroupslot.groupshot_id)
+	# 	else
+	# 		@slots = Groupshot.all.order(:date).order(:start_time)
+	# 		@dates = ["2016-11-16", "2016-11-17", "2016-11-18", "2016-11-19", "2016-11-21", "2016-11-22", "2016-11-23"]
+	# 	end
+	# end
 
 	def sign_ups
 		if current_account.timeslot_id.present? 
@@ -76,31 +76,31 @@ class AccountsController < ApplicationController
 		
 	end
 
-	def group_signup
-		@timeslot = Timeslot.find(params[:slot_id])
+	# def group_signup
+	# 	@timeslot = Timeslot.find(params[:slot_id])
 
-		if params[:group_name] != "" or params[:group_name].present?
-			if @timeslot.slots > 0 
-				@groupslot = Groupslot.new
-				@groupslot.student_id = current_account.student_id
-				@groupslot.groupshot_id = params[:slot_id]
-				@groupslot.group_name = params[:group_name]
-				@groupslot.save
+	# 	if params[:group_name] != "" or params[:group_name].present?
+	# 		if @timeslot.slots > 0 
+	# 			@groupslot = Groupslot.new
+	# 			@groupslot.student_id = current_account.student_id
+	# 			@groupslot.groupshot_id = params[:slot_id]
+	# 			@groupslot.group_name = params[:group_name]
+	# 			@groupslot.save
 
-				@timeslot.slots = @timeslot.slots - 1
-				@timeslot.save
+	# 			@timeslot.slots = @timeslot.slots - 1
+	# 			@timeslot.save
 
-				redirect_to group_signups_accounts_path
-			elsif @timeslot.slots == 0
-				flash[:alert] = "Slot already taken."
-				redirect_to group_signups_accounts_path
-			end
-		else
-			flash[:alert] = "Please enter a group name."
-			redirect_to group_signups_accounts_path
-		end
+	# 			redirect_to group_signups_accounts_path
+	# 		elsif @timeslot.slots == 0
+	# 			flash[:alert] = "Slot already taken."
+	# 			redirect_to group_signups_accounts_path
+	# 		end
+	# 	else
+	# 		flash[:alert] = "Please enter a group name."
+	# 		redirect_to group_signups_accounts_path
+	# 	end
 
-	end
+	# end
 
 	def photoshoot
 		@account = Account.where(student_id: params[:id]).first
