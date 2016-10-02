@@ -34,25 +34,25 @@ class Account < ActiveRecord::Base
 
     case self.school
     when "SOH" 
-      if Time.current.between?(@SOHstart, @SOHend)
+      if Time.now.between?(@SOHstart, @SOHend)
         return true
       else
         return false
       end
     when "SOSS"
-      if Time.current.between?(@SOSSstart, @SOSSend)
+      if Time.now.between?(@SOSSstart, @SOSSend)
         return true
       else
         return false
       end
     when "SOSE"
-      if Time.current.between?(@SOSEstart, @SOSEend)
+      if Time.now.between?(@SOSEstart, @SOSEend)
         return true
       else
         return false
       end
     when "SOM"
-      if Time.current.between?(@SOMstart, @SOMend)
+      if Time.now.between?(@SOMstart, @SOMend)
         return true
       else
         return false
