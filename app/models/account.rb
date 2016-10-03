@@ -26,7 +26,7 @@ class Account < ActiveRecord::Base
     @SOSSstart = Time.new(2016, 10, 3, 23).in_time_zone('Hong Kong')
     @SOSSend = Time.new(2016, 10, 4, 15).in_time_zone('Hong Kong')
 
-    @SOSEstart = Time.new(2016, 10, 2, 23).in_time_zone('Hong Kong')
+    @SOSEstart = Time.new(2016, 10, 4, 23).in_time_zone('Hong Kong')
     @SOSEend = Time.new(2016, 10, 5, 15).in_time_zone('Hong Kong')
 
     @SOMstart = Time.new(2016, 10, 5, 23).in_time_zone('Hong Kong')
