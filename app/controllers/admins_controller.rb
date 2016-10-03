@@ -24,6 +24,14 @@ class AdminsController < ApplicationController
 
 		@accounts_list = Account.all
 
+
+		@soh_shoots = Account.where(school: "SOH").where.not(timeslot_id: nil).count
+		@soss_shoots = Account.where(school: "SOSS").where.not(timeslot_id: nil).count
+		@sose_shoots = Account.where(school: "SOSE").where.not(timeslot_id: nil).count
+		@som_shoots = Account.where(school: "SOM").where.not(timeslot_id: nil).count
+
+		@total_shoots = Account.where.not(timeslot_id: nil).count
+
 	    respond_to do |format|
 	      format.html
 	      format.csv { send_data @accounts_list.to_csv, filename: "accounts-#{Date.today}.csv" }
