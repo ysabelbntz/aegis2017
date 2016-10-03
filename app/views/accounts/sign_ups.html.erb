@@ -87,10 +87,43 @@
                 <% @status = "danger" %>
               <% end %>
               <% if slot.slots == 0 %>
-                <td class="center-align"><%=button_to slot.slots, sign_up_accounts_path(slot.id), class: "btn #{@status}", disabled: true%></td>
+                <td class="center-align">
+                  <button type="button" class="btn btn-lg <%=@status%>" data-toggle="modal" data-target="#slot<%=slot.id%>" disabled>
+                    <%= slot.slots %>
+                  </button>
+                <%#button_to slot.slots, group_signup_accounts_path(slot.id), class: "btn #{@status}", disabled: true%></td>
               <% else %>
-                <td class="center-align"><%=button_to slot.slots, sign_up_accounts_path(slot.id), class: "btn #{@status}"%></td>
+                <td class="center-align">
+                  <button type="button" class="btn btn-lg <%=@status%>" data-toggle="modal" data-target="#slot<%=slot.id%>">
+                    <%= slot.slots %>
+                  </button>
+                  <%#button_to slot.slots, group_signup_accounts_path(slot.id), class: "btn #{@status}"%></td>
               <% end %>
+
+              <div class="modal fade bs-example-modal-sm" id="slot<%=slot.id%>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                  
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h5 class="modal-title center-align" id="myModalLabel">Groupshoot Slot Signups</h5>
+                    </div>
+                    <div class="modal-body">
+                      <h4 class="center-align">Slot details:</h4>
+                      <h3 class="center-align"><%=Date.parse(date).strftime("%a, %b %d")%></span></h3>
+                      <h3 class="center-align"><%= slot.start_time + " - " + slot.end_time %></h3><br>
+                      <div class="row">
+                        <div class="col-xs-12">
+                          <form action="/accounts/sign_up" method="POST">
+                            <input name="slot_id" value="<%=slot.id%>" hidden><br>
+                            <button type="submit" class="btn">Sign up</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <% end %>
           </tr>
         <% end %>

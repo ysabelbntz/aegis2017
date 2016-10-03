@@ -60,10 +60,10 @@ class AccountsController < ApplicationController
 	end
 
 	def sign_up
-		@timeslot = Timeslot.find(params[:format])
+		@timeslot = Timeslot.find(params[:slot_id])
 
 		if @timeslot.slots > 0
-			current_account.timeslot_id = params[:format]
+			current_account.timeslot_id = params[:slot_id]
 			current_account.save(validate: false)
 			@timeslot.slots = @timeslot.slots - 1
 			@timeslot.save
