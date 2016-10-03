@@ -30,13 +30,13 @@ class Account < ActiveRecord::Base
 
     case self.school
     when "SOH" 
-        return "You may only login between " + @SOHstart.strftime("%b %d, %I:%M") + " and " + @SOHend.strftime("%b %d, %I:%M") 
+        return "You may only login between " + @SOHstart.strftime("%b %d, %I:%M") + " AM and " + @SOHend.strftime("%b %d, %I:%M")  +" PM. "
     when "SOSS"
-        return "You may only login between " + @SOSSstart.strftime("%b %d, %I:%M")  + " and " + @SOSSend.strftime("%b %d, %I:%M")  
+        return "You may only login between " + @SOSSstart.strftime("%b %d, %I:%M")  + " AM and " + @SOSSend.strftime("%b %d, %I:%M")   +" PM. "
     when "SOSE"
-      return "You may only login between " + @SOSEstart.strftime("%b %d, %I:%M")  + " and " + @SOSEend.strftime("%b %d, %I:%M")  
+      return "You may only login between " + @SOSEstart.strftime("%b %d, %I:%M")  + " AM and " + @SOSEend.strftime("%b %d, %I:%M")   +" PM. "
     when "SOM"
-      return "You may only login between " + @SOMstart.strftime("%b %d, %I:%M")  + " and " + @SOMend.strftime("%b %d, %I:%M") 
+      return "You may only login between " + @SOMstart.strftime("%b %d, %I:%M")  + " AM and " + @SOMend.strftime("%b %d, %I:%M") +" PM. "
     end
   end
 
