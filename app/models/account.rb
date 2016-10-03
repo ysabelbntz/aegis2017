@@ -16,7 +16,28 @@ class Account < ActiveRecord::Base
   end
 
   def inactive_message
-   'You may not log in.'
+    @SOHstart = Time.new(2016, 10, 2,23).in_time_zone('Hong Kong')
+    @SOHend = Time.new(2016, 10, 3, 15).in_time_zone('Hong Kong')
+
+    @SOSSstart = Time.new(2016, 10, 3, 23).in_time_zone('Hong Kong')
+    @SOSSend = Time.new(2016, 10, 4, 15).in_time_zone('Hong Kong')
+
+    @SOSEstart = Time.new(2016, 10, 4, 23).in_time_zone('Hong Kong')
+    @SOSEend = Time.new(2016, 10, 5, 15).in_time_zone('Hong Kong')
+
+    @SOMstart = Time.new(2016, 10, 5, 23).in_time_zone('Hong Kong')
+    @SOMend = Time.new(2016, 10, 6, 15).in_time_zone('Hong Kong')
+
+    case self.school
+    when "SOH" 
+        return "You may only login between " + @SOHstart.strftime("%b %d, %I:%M") + " and " + @SOHend.strftime("%b %d, %I:%M") 
+    when "SOSS"
+        return "You may only login between " + @SOSSstart.strftime("%b %d, %I:%M")  + " and " + @SOSSend.strftime("%b %d, %I:%M")  
+    when "SOSE"
+      return "You may only login between " + @SOSEstart.strftime("%b %d, %I:%M")  + " and " + @SOSEend.strftime("%b %d, %I:%M")  
+    when "SOM"
+      return "You may only login between " + @SOMstart.strftime("%b %d, %I:%M")  + " and " + @SOMend.strftime("%b %d, %I:%M") 
+    end
   end
 
   def can_login
