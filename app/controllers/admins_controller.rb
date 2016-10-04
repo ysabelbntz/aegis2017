@@ -2,6 +2,15 @@
 class AdminsController < ApplicationController
 	before_filter :authenticate_admin!
 
+	def new
+		redirect_to root_path
+	end
+
+	def create
+		redirect_to root_path
+	end
+
+
 	def index
 
 		@soh_students = Student.where(school: "SOH").count

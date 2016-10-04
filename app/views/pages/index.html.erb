@@ -258,6 +258,7 @@
 		<div class="col-xs-12 col-md-8">
 			<%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
 			    <%= f.input :name, label: "", placeholder: "Name" %>
+			    <%= f.input :id_number, label: "", placeholder: "ID Number" %>
 			    <%= f.input :email, label: "", placeholder: "Email" %>
 			    <%= f.input :message, label: "", placeholder: "Message", :as => :text, rows: 15 %>
 			    <div>
