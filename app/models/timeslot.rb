@@ -2,7 +2,7 @@ class Timeslot < ActiveRecord::Base
 	has_many :accounts, before_add: :validate_user_limit, after_add: :subtract_slots
 
 	def to_s
-		self.id.to_s + self.start_time + " " + self.end_time + " " + self.date.to_s + " " + self.slots.to_s
+		self.date.strftime("%a, %b %d") + " - " + self.start_time + " - " + self.end_time
 	end
 
 	private

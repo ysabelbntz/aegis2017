@@ -41,9 +41,15 @@ class AccountsController < ApplicationController
 		idparams = params[:id]
 		@student=Account.where(student_id: idparams).first
 
+		if @student.timeslot_id.nil?
+			@timeslot = "No timeslot."
+		else
+			@timeslot = Timeslot.find(@student.timeslot_id).to_s
+		end
+
 		respond_to do |format|
 			format.html
-			format.json {render json: @student}
+			format.json {render json: @student, methods: :get_timeslot}
 		end
 	end
 

@@ -11,6 +11,10 @@ class Account < ActiveRecord::Base
     "#{self.student_id}, #{self.name}, #{self.yr} - #{self.course}"
   end
 
+  def get_timeslot
+    Timeslot.find_by(id: self.timeslot_id).to_s
+  end
+
   def active_for_authentication?
     super and self.can_login
   end
