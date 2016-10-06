@@ -20,11 +20,27 @@
 # 	student.save(validate: false)
 # end
 
-Timeslot.where(type: nil).each do |timeslot|
-	@accounts = Account.where(timeslot_id: timeslot.id).count
+# Timeslot.where(type: nil).each do |timeslot|
+# 	@accounts = Account.where(timeslot_id: timeslot.id).count
 
-	if @accounts != (14 - timeslot.slots)
-		timeslot.slots = 14 - @accounts
-		timeslot.save
-	end
+# 	if @accounts != (14 - timeslot.slots)
+# 		timeslot.slots = 14 - @accounts
+# 		timeslot.save
+# 	end
+# end
+
+@groupslots = Groupslot.group(:student_id).having('count("student_id") > 1').count(:student_id)
+
+@groupslots.each do |key, value|
+
+  # Keep one and return rest of the duplicate records
+
+  duplicates = Groupslot.where(student_id: key)[1..value-1]
+
+  puts "#{key} = #{duplicates.count}"
+
+  # Destroy duplicates and their dependents
+
+  duplicates.each(&:destroy)
+
 end

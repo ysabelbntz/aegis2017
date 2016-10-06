@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :groupslots do
     collection do
       post 'reset'
+      post 'clean_groups'
     end
   end
 
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
       get 'accounts'
       get 'students'
       get 'timeslots'
+      post 'clean_timeslots'
     end
   end
 

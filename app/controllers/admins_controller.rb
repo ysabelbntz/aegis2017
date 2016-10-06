@@ -1,6 +1,7 @@
 # encoding: utf-8
 class AdminsController < ApplicationController
 	before_filter :authenticate_admin!
+	skip_before_action :verify_authenticity_token
 
 	def new
 		redirect_to root_path
@@ -10,6 +11,28 @@ class AdminsController < ApplicationController
 		redirect_to root_path
 	end
 
+	def clean_timeslots
+		Timeslot.where(type: nil).each do |timeslot|
+			@accounts = Account.where(timeslot_id: timeslot.id).count
+
+			if @accounts != (14 - timeslot.slots)
+				timeslot.slots = 14 - @accounts
+				timeslot.save
+			end
+		end
+
+		Groupshot.all.each do |groupshot|
+			@accounts = Groupslot.where(groupshot_id: groupshot.id).count
+
+			if @accounts != (18 - groupshot.slots)
+				groupshot.slots = 18 - @accounts
+				groupshot.save
+			end
+		end
+		
+		flash[:notice] = "Timeslot counts cleaned."
+		redirect_to :back	
+	end	
 
 	def index
 

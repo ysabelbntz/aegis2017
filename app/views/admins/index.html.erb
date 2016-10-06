@@ -130,9 +130,19 @@
         <button type="submit">Reset</button>
       </form>
 
+      <h3 class="center-align">Clean Photoshoot Count</h3>
+      <form action="/admins/clean_timeslots" method="POST">
+        <button type="submit">Reset</button>
+      </form>
+
       <h3 class="center-align">Reset Group Photoshoot Slot</h3>
       <form action="/groupslots/reset" method="POST">
         <input type="number" name="id" placeholder="ID of Point person">
+        <button type="submit">Reset</button>
+      </form>
+
+      <h3 class="center-align">Clean Group Shots</h3>
+      <form action="/groupslots/clean_groups" method="POST">
         <button type="submit">Reset</button>
       </form>
     </div>
