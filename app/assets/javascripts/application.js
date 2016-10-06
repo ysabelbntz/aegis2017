@@ -92,7 +92,7 @@ $('.accounts.group_signups').ready(function(){
 	$('.groupslot-confirm').attr("disabled", "disabled");
 
 	$('.grpnm').on('input', function() {
-		if ($(this).val().toString().length > 0) {
+		if ($(this).val().length > 0) {
 			$(this).siblings(".groupslot-confirm").removeAttr("disabled");
 		}
 		else {
