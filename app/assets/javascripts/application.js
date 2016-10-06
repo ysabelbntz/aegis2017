@@ -64,7 +64,7 @@ $('.admins.accounts').ready(function(){
 	        data: { id: value },
 	        dataType: 'json',
 	        success: function(student) {
-	        	if (student != null){
+	        	if (student.name != null){
 	            	$('#student-name').text(student.name);	
 		            $('#student-yrcrs').text(student.yr + " - " + student.course);
 		            $('#student-school').text(student.school);
@@ -83,8 +83,22 @@ $('.admins.accounts').ready(function(){
 	        $('#student-school').text("");
 	        $('#student-account').text("");
 	        $('#student-email').text("");
+	        $('#student-timeslot').text("");
 	    }
 	  }); 
+});
+
+$('.accounts.group_signups').ready(function(){
+	$('.groupslot-confirm').attr("disabled", "disabled");
+
+	$('.grpnm').on('input', function() {
+		if ($(this).val().toString().length > 0) {
+			$(this).siblings(".groupslot-confirm").removeAttr("disabled");
+		}
+		else {
+			$('.groupslot-confirm').attr("disabled", "disabled");
+		}
+	});
 });
 
 
