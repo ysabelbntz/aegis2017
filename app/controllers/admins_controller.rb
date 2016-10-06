@@ -29,7 +29,9 @@ class AdminsController < ApplicationController
 				groupshot.save
 			end
 		end
-		
+
+		Timeslot.where(date: "2016-10-22").where(start_time: "11:00 AM").update_all(slots: 0)
+		Timeslot.where(date: "2016-11-04").where(start_time: "10:00 AM").update_all(slots: 0)
 		flash[:notice] = "Timeslot counts cleaned."
 		redirect_to :back	
 	end	
