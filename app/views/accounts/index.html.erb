@@ -49,10 +49,16 @@
       <br>
       <h3>Photoshoot schedule</h3>
       <% if @timeslot.present? %>
-        <h4><%=@timeslot.to_s%></h4>
-        <%= button_to "DOWNLOAD PDF", slip_accounts_path(format: 'pdf'), method: :get%>
+        <h4>Individual: <span class="text-bold"><%=@timeslot.to_s%></span></h4>
+        <%= button_to "DOWNLOAD AS PDF", slip_accounts_path(format: 'pdf'), method: :get%><br><br>
       <% else %>
-        <h4>No timeslot.</h4>
+        <h4>No timeslot.</h4><br><br>
+      <% end %>
+      <% if @groupslot.present? %>
+        <h4>Groupshot:<span class="text-bold"> <%= @groupslot.group_name %>: <%=@groupshot.to_s%></span></h4>
+        <%= button_to "DOWNLOAD AS PDF", groupslip_accounts_path(groupslot: @groupshot.id, format: 'pdf'), method: :get%>
+      <% else %>
+        <h4>No groupslot.</h4>
       <% end %>
     </div>
   </div>

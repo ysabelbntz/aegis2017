@@ -32,16 +32,24 @@ class Account < ActiveRecord::Base
     @SOMstart = Time.new(2016, 10, 5, 23).in_time_zone('Hong Kong')
     @SOMend = Time.new(2016, 10, 6, 15).in_time_zone('Hong Kong')
 
-    case self.school
-    when "SOH" 
-        return "You may only login between " + @SOHstart.strftime("%b %d, %I:%M") + " AM and " + @SOHend.strftime("%b %d, %I:%M")  +" PM. "
-    when "SOSS"
-        return "You may only login between " + @SOSSstart.strftime("%b %d, %I:%M")  + " AM and " + @SOSSend.strftime("%b %d, %I:%M")   +" PM. "
-    when "SOSE"
-      return "You may only login between " + @SOSEstart.strftime("%b %d, %I:%M")  + " AM and " + @SOSEend.strftime("%b %d, %I:%M")   +" PM. "
-    when "SOM"
-      return "You may only login between " + @SOMstart.strftime("%b %d, %I:%M")  + " AM and " + @SOMend.strftime("%b %d, %I:%M") +" PM. "
-    end
+    @groupstart1 = Time.new(2016, 10, 6, 23).in_time_zone('Hong Kong')
+    @groupend1 = Time.new(2016, 10, 7, 15).in_time_zone('Hong Kong')
+
+    @groupstart2 = Time.new(2016, 10, 7, 23).in_time_zone('Hong Kong')
+    @groupend2 = Time.new(2016, 10, 8, 15).in_time_zone('Hong Kong')
+
+    # case self.school
+    # when "SOH" 
+    #     return "You may only login between " + @SOHstart.strftime("%b %d, %I:%M") + " AM and " + @SOHend.strftime("%b %d, %I:%M")  +" PM. "
+    # when "SOSS"
+    #     return "You may only login between " + @SOSSstart.strftime("%b %d, %I:%M")  + " AM and " + @SOSSend.strftime("%b %d, %I:%M")   +" PM. "
+    # when "SOSE"
+    #   return "You may only login between " + @SOSEstart.strftime("%b %d, %I:%M")  + " AM and " + @SOSEend.strftime("%b %d, %I:%M")   +" PM. "
+    # when "SOM"
+    #   return "You may only login between " + @SOMstart.strftime("%b %d, %I:%M")  + " AM and " + @SOMend.strftime("%b %d, %I:%M") +" PM. "
+    # end
+
+    return "You may only login between " + @groupstart1.strftime("%b %d, %I:%M")  + " AM and " + @groupend1.strftime("%b %d, %I:%M") +" PM or "+ @groupstart2.strftime("%b %d, %I:%M")  + " AM and " + @groupend2.strftime("%b %d, %I:%M") +" PM."
   end
 
   def can_login
@@ -57,32 +65,45 @@ class Account < ActiveRecord::Base
     @SOMstart = Time.new(2016, 10, 5, 23).in_time_zone('Hong Kong')
     @SOMend = Time.new(2016, 10, 6, 15).in_time_zone('Hong Kong')
 
-    case self.school
-    when "SOH" 
-      if Time.current.in_time_zone('Hong Kong').between?(@SOHstart, @SOHend)
-        return true
-      else
-        return false
-      end
-    when "SOSS"
-      if Time.current.in_time_zone('Hong Kong').between?(@SOSSstart, @SOSSend)
-        return true
-      else
-        return false
-      end
-    when "SOSE"
-      if Time.current.in_time_zone('Hong Kong').between?(@SOSEstart, @SOSEend)
-        return true
-      else
-        return false
-      end
-    when "SOM"
-      if Time.current.in_time_zone('Hong Kong').between?(@SOMstart, @SOMend)
-        return true
-      else
-        return false
-      end
+    @groupstart1 = Time.new(2016, 10, 6, 23).in_time_zone('Hong Kong')
+    @groupend1 = Time.new(2016, 10, 7, 15).in_time_zone('Hong Kong')
+
+    @groupstart2 = Time.new(2016, 10, 7, 23).in_time_zone('Hong Kong')
+    @groupend2 = Time.new(2016, 10, 8, 15).in_time_zone('Hong Kong')
+
+
+    # case self.school
+    # when "SOH" 
+    #   if Time.current.in_time_zone('Hong Kong').between?(@SOHstart, @SOHend)
+    #     return true
+    #   else
+    #     return false
+    #   end
+    # when "SOSS"
+    #   if Time.current.in_time_zone('Hong Kong').between?(@SOSSstart, @SOSSend)
+    #     return true
+    #   else
+    #     return false
+    #   end
+    # when "SOSE"
+    #   if Time.current.in_time_zone('Hong Kong').between?(@SOSEstart, @SOSEend)
+    #     return true
+    #   else
+    #     return false
+    #   end
+    # when "SOM"
+    #   if Time.current.in_time_zone('Hong Kong').between?(@SOMstart, @SOMend)
+    #     return true
+    #   else
+    #     return false
+    #   end
+    # end
+    if Time.current.in_time_zone('Hong Kong').between?(@groupstart1, @groupend1) or Time.current.in_time_zone('Hong Kong').between?(@groupstart2, @groupend2)
+      return true
+    else
+      return false
     end
+
   end
 
 
