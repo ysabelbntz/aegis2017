@@ -76,10 +76,16 @@ class AccountsController < ApplicationController
 		@timeslot = Timeslot.find(params[:slot_id])
 
 		if @timeslot.slots > 0
-			current_account.timeslot_id = params[:slot_id]
-			current_account.save(validate: false)
+			
 			@timeslot.slots = @timeslot.slots - 1
-			@timeslot.save
+			if @timeslot.slots < 0
+				flash[:alert] = "Slot already taken."
+				redirect_to sign_ups_accounts_path
+			else
+				@timeslot.save
+				current_account.timeslot_id = params[:slot_id]
+				current_account.save(validate: false)
+			end
 
 			redirect_to sign_ups_accounts_path
 		elsif @timeslot.slots == 0
@@ -94,16 +100,20 @@ class AccountsController < ApplicationController
 
 		if params[:group_name] != "" or params[:group_name].present?
 			if @timeslot.slots > 0 
-				@groupslot = Groupslot.new
-				@groupslot.student_id = current_account.student_id
-				@groupslot.groupshot_id = params[:slot_id]
-				@groupslot.group_name = params[:group_name]
-				@groupslot.save
-
 				@timeslot.slots = @timeslot.slots - 1
-				@timeslot.save
-
-				redirect_to group_signups_accounts_path
+				
+				if @timeslot.slots < 0
+					flash[:alert] = "Slot already taken."
+					redirect_to group_signups_accounts_path
+				else
+					@timeslot.save
+					@groupslot = Groupslot.new
+					@groupslot.student_id = current_account.student_id
+					@groupslot.groupshot_id = params[:slot_id]
+					@groupslot.group_name = params[:group_name]
+					@groupslot.save
+					redirect_to group_signups_accounts_path
+				end
 			elsif @timeslot.slots == 0
 				flash[:alert] = "Slot already taken."
 				redirect_to group_signups_accounts_path

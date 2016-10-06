@@ -44,7 +44,7 @@
 
       </div>
     </div>
-  <% else %>
+  <% elsif current_account.school != "SOM" %>
   <div class="row">
     <div class="row" id="account-sign-ups">
       <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
@@ -130,5 +130,10 @@
       </table>
     </div>
   </div>
+
+  <% else %>
+    <div class="row">
+      <h4 class="center-align">Signups are disabled for SOM students.</h4>
+    </div>
   <% end %>
 </div>
