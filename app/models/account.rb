@@ -114,11 +114,7 @@ class Account < ActiveRecord::Base
         return false
       end
     else 
-      if Time.current.in_time_zone('Hong Kong').between?(@groupstart1, @groupend1) or Time.current.in_time_zone('Hong Kong').between?(@groupstart2, @groupend2)
-        return true
-      else
-        return false
-      end
+      return false
     end
 
   end
