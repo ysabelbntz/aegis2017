@@ -116,7 +116,7 @@
                 <td><%= slot.start_time + " - " + slot.end_time %></td>
                 <td class="right-align"><%= slot.slots%> </td>
                 <td>
-                  <% Account.where(timeslot_id: slot.id).each do |account | %>
+                  <% Account.where(timeslot_id: slot.id).order(:student_id).each do |account | %>
                     <%= account.to_s %><br>
                   <% end %>
                 </td>

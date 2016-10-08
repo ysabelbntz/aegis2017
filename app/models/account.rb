@@ -38,6 +38,9 @@ class Account < ActiveRecord::Base
     @groupstart2 = Time.new(2016, 10, 7, 23).in_time_zone('Hong Kong')
     @groupend2 = Time.new(2016, 10, 8, 15).in_time_zone('Hong Kong')
 
+    @somspecialstart = Time.new(2016, 10, 8, 23).in_time_zone('Hong Kong')
+    @somspecialend = Time.new(2016, 10, 9, 15).in_time_zone('Hong Kong')
+
     # case self.school
     # when "SOH" 
     #     return "You may only login between " + @SOHstart.strftime("%b %d, %I:%M") + " AM and " + @SOHend.strftime("%b %d, %I:%M")  +" PM. "
@@ -49,21 +52,21 @@ class Account < ActiveRecord::Base
     #   return "You may only login between " + @SOMstart.strftime("%b %d, %I:%M")  + " AM and " + @SOMend.strftime("%b %d, %I:%M") +" PM. "
     # end
 
-    return "You may only login between " + @groupstart1.strftime("%b %d, %I:%M")  + " AM and " + @groupend1.strftime("%b %d, %I:%M") +" PM or "+ @groupstart2.strftime("%b %d, %I:%M")  + " AM and " + @groupend2.strftime("%b %d, %I:%M") +" PM."
+    return "Only SOM students may log in."
   end
 
   def can_login
-    @SOHstart = Time.new(2016, 10, 2,23).in_time_zone('Hong Kong')
-    @SOHend = Time.new(2016, 10, 3, 15).in_time_zone('Hong Kong')
+    # @SOHstart = Time.new(2016, 10, 2,23).in_time_zone('Hong Kong')
+    # @SOHend = Time.new(2016, 10, 3, 15).in_time_zone('Hong Kong')
 
-    @SOSSstart = Time.new(2016, 10, 3, 23).in_time_zone('Hong Kong')
-    @SOSSend = Time.new(2016, 10, 4, 15).in_time_zone('Hong Kong')
+    # @SOSSstart = Time.new(2016, 10, 3, 23).in_time_zone('Hong Kong')
+    # @SOSSend = Time.new(2016, 10, 4, 15).in_time_zone('Hong Kong')
 
-    @SOSEstart = Time.new(2016, 10, 4, 23).in_time_zone('Hong Kong')
-    @SOSEend = Time.new(2016, 10, 5, 15).in_time_zone('Hong Kong')
+    # @SOSEstart = Time.new(2016, 10, 4, 23).in_time_zone('Hong Kong')
+    # @SOSEend = Time.new(2016, 10, 5, 15).in_time_zone('Hong Kong')
 
-    @SOMstart = Time.new(2016, 10, 5, 23).in_time_zone('Hong Kong')
-    @SOMend = Time.new(2016, 10, 6, 15).in_time_zone('Hong Kong')
+    # @SOMstart = Time.new(2016, 10, 5, 23).in_time_zone('Hong Kong')
+    # @SOMend = Time.new(2016, 10, 6, 15).in_time_zone('Hong Kong')
 
     @groupstart1 = Time.new(2016, 10, 6, 23).in_time_zone('Hong Kong')
     @groupend1 = Time.new(2016, 10, 7, 15).in_time_zone('Hong Kong')
@@ -71,6 +74,9 @@ class Account < ActiveRecord::Base
     @groupstart2 = Time.new(2016, 10, 7, 23).in_time_zone('Hong Kong')
     @groupend2 = Time.new(2016, 10, 8, 15).in_time_zone('Hong Kong')
 
+
+    @somspecialstart = Time.new(2016, 10, 8, 23).in_time_zone('Hong Kong')
+    @somspecialend = Time.new(2016, 10, 9, 15).in_time_zone('Hong Kong')
 
     # case self.school
     # when "SOH" 
@@ -98,10 +104,21 @@ class Account < ActiveRecord::Base
     #     return false
     #   end
     # end
-    if Time.current.in_time_zone('Hong Kong').between?(@groupstart1, @groupend1) or Time.current.in_time_zone('Hong Kong').between?(@groupstart2, @groupend2)
-      return true
-    else
-      return false
+   
+
+    case self.school
+    when "SOM"
+      if Time.current.in_time_zone('Hong Kong').between?(@somspecialstart, @somspecialend)
+        return true
+      else
+        return false
+      end
+    else 
+      if Time.current.in_time_zone('Hong Kong').between?(@groupstart1, @groupend1) or Time.current.in_time_zone('Hong Kong').between?(@groupstart2, @groupend2)
+        return true
+      else
+        return false
+      end
     end
 
   end

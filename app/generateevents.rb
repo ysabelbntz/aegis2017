@@ -29,18 +29,20 @@
 # 	end
 # end
 
-@groupslots = Groupslot.group(:student_id).having('count("student_id") > 1').count(:student_id)
+# @groupslots = Groupslot.group(:student_id).having('count("student_id") > 1').count(:student_id)
 
-@groupslots.each do |key, value|
+# @groupslots.each do |key, value|
 
-  # Keep one and return rest of the duplicate records
+#   # Keep one and return rest of the duplicate records
 
-  duplicates = Groupslot.where(student_id: key)[1..value-1]
+#   duplicates = Groupslot.where(student_id: key)[1..value-1]
 
-  puts "#{key} = #{duplicates.count}"
+#   puts "#{key} = #{duplicates.count}"
 
-  # Destroy duplicates and their dependents
+#   # Destroy duplicates and their dependents
 
-  duplicates.each(&:destroy)
+#   duplicates.each(&:destroy)
 
-end
+# end
+
+Account.where(school: "SOM").update_all(rescheduled: false)

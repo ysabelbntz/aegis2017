@@ -72,6 +72,19 @@ class AccountsController < ApplicationController
 	    end
 	end
 
+	def reschedule
+		@timeslot = Timeslot.find_by(id: current_account.timeslot_id)
+		@timeslot.slots = @timeslot.slots + 1
+		@timeslot.save
+
+		current_account.timeslot_id = nil
+		current_account.rescheduled = true
+		current_account.save(validate: false)
+
+		flash[:alert] = "Timeslot reset."
+		redirect_to :back
+	end
+
 	def sign_up
 		@timeslot = Timeslot.find(params[:slot_id])
 

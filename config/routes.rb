@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       get 'groupslip'
       post 'sign_up'
       post 'photoshoot'
+      post 'reschedule'
     end
   end
 
