@@ -14,14 +14,18 @@ class AccountsController < ApplicationController
 	end	
 
 	# def group_signups
-	# 	@checkgroupslot = Groupslot.where(student_id: current_account.student_id)
-	# 	if @checkgroupslot.count > 0
-	# 		@has_groupshot = true
-	# 		@checkgroupslot = @checkgroupslot.first
-	# 		@timeslot = Groupshot.find(@checkgroupslot.groupshot_id)
+	# 	if Time.current.in_time_zone('Hong Kong').between?(Time.new(2016, 10, 9, 16).in_time_zone('Hong Kong'), Time.new(2016, 10, 11, 15).in_time_zone('Hong Kong')) 
+	# 		@checkgroupslot = Groupslot.where(student_id: current_account.student_id)
+	# 		if @checkgroupslot.count > 0
+	# 			@has_groupshot = true
+	# 			@checkgroupslot = @checkgroupslot.first
+	# 			@timeslot = Groupshot.find(@checkgroupslot.groupshot_id)
+	# 		else
+	# 			@slots = Groupshot.all.order(:date).order(:start_time)
+	# 			@dates = ["2016-11-16", "2016-11-17", "2016-11-18", "2016-11-19", "2016-11-21", "2016-11-22", "2016-11-23"]
+	# 		end
 	# 	else
-	# 		@slots = Groupshot.all.order(:date).order(:start_time)
-	# 		@dates = ["2016-11-16", "2016-11-17", "2016-11-18", "2016-11-19", "2016-11-21", "2016-11-22", "2016-11-23"]
+	# 		redirect_to :back
 	# 	end
 	# end
 

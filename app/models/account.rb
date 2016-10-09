@@ -68,15 +68,18 @@ class Account < ActiveRecord::Base
     # @SOMstart = Time.new(2016, 10, 5, 23).in_time_zone('Hong Kong')
     # @SOMend = Time.new(2016, 10, 6, 15).in_time_zone('Hong Kong')
 
-    @groupstart1 = Time.new(2016, 10, 6, 23).in_time_zone('Hong Kong')
-    @groupend1 = Time.new(2016, 10, 7, 15).in_time_zone('Hong Kong')
+    # @groupstart1 = Time.new(2016, 10, 6, 23).in_time_zone('Hong Kong')
+    # @groupend1 = Time.new(2016, 10, 7, 15).in_time_zone('Hong Kong')
 
-    @groupstart2 = Time.new(2016, 10, 7, 23).in_time_zone('Hong Kong')
-    @groupend2 = Time.new(2016, 10, 8, 15).in_time_zone('Hong Kong')
+    # @groupstart2 = Time.new(2016, 10, 7, 23).in_time_zone('Hong Kong')
+    # @groupend2 = Time.new(2016, 10, 8, 15).in_time_zone('Hong Kong')
 
+    # @somspecialstart = Time.new(2016, 10, 8, 23).in_time_zone('Hong Kong')
+    # @somspecialend = Time.new(2016, 10, 9, 15).in_time_zone('Hong Kong')
 
-    @somspecialstart = Time.new(2016, 10, 8, 23).in_time_zone('Hong Kong')
-    @somspecialend = Time.new(2016, 10, 9, 15).in_time_zone('Hong Kong')
+    @specialstart = Time.new(2016, 10, 9, 16).in_time_zone('Hong Kong')
+    @specialend = Time.new(2016, 10, 13, 15).in_time_zone('Hong Kong')
+
 
     # case self.school
     # when "SOH" 
@@ -106,16 +109,23 @@ class Account < ActiveRecord::Base
     # end
    
 
-    case self.school
-    when "SOM"
-      if Time.current.in_time_zone('Hong Kong').between?(@somspecialstart, @somspecialend)
-        return true
-      else
-        return false
-      end
-    else 
+    # case self.school
+    # when "SOM"
+    #   if Time.current.in_time_zone('Hong Kong').between?(@somspecialstart, @somspecialend)
+    #     return true
+    #   else
+    #     return false
+    #   end
+    # else 
+    #   return false
+    # end
+
+    if Time.current.in_time_zone('Hong Kong').between?(@specialstart, @specialend)
+      return true
+    else
       return false
     end
+    
 
   end
 

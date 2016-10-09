@@ -1,22 +1,19 @@
 class RegistrationsController < Devise::RegistrationsController
 	skip_before_filter :verify_authenticity_token, :only => :create
 	def new 
-		redirect_to root_path
+		if Time.current.in_time_zone('Hong Kong').between?(Time.new(2016, 10, 9, 16).in_time_zone('Hong Kong'), Time.new(2016, 10, 13, 15).in_time_zone('Hong Kong'))
+			super
+		else 
+			redirect_to root_path
+		end
 	end
 
 	def create
-		# super do
-		# 	Student.find(params[:account][:student_id]).update(account: true)	
-		# end
+		super do
+			Student.find(params[:account][:student_id]).update(account: true)	
+		end
 
-		redirect_to root_path
-	end
-
-	
-	def update 
-		# @account = Account.where(email: params[:email]).first
-		# @account.password = params[:password]
-		# @account.password_confirmation = params[:password_confirmation]
+		# redirect_to root_path
 	end
 
 	

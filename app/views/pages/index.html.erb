@@ -64,7 +64,9 @@
 				    </li>
 	          	</ul>
 	        </li>
-        	<!-- <li><%# link_to 'REGISTER', new_account_registration_path, method: :get %></li> -->
+        	<% if Time.current.in_time_zone('Hong Kong').between?(Time.new(2016, 10, 9, 16).in_time_zone('Hong Kong'), Time.new(2016, 10, 13, 15).in_time_zone('Hong Kong')) %>
+        		<li><%= link_to 'REGISTER', new_account_registration_path, method: :get %></li>
+        	<% end %>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

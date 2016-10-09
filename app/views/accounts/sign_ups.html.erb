@@ -41,9 +41,6 @@
       <div class="row">
         <h4>This slip also confirms that I have signed up on <span class="text-bold"><%=@timeslot.date.strftime("%A, %B %d, %Y")%> at <%= @timeslot.start_time.to_s + " - " + @timeslot.end_time.to_s%></span>.</h4>
         <%= button_to "SAVE AS PDF", slip_accounts_path(format: 'pdf'), method: :get%><br><br>
-        <% if current_account.school == "SOM" and current_account.rescheduled == false %>
-          <%= button_to "RESCHEDULE", reschedule_accounts_path, method: :post %>
-        <% end %>
 
       </div>
     </div>
