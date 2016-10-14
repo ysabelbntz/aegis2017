@@ -13,39 +13,33 @@ class AccountsController < ApplicationController
 		end
 	end	
 
-	# def group_signups
-	# 	if Time.current.in_time_zone('Hong Kong').between?(Time.new(2016, 10, 9, 16).in_time_zone('Hong Kong'), Time.new(2016, 10, 11, 15).in_time_zone('Hong Kong')) 
-	# 		@checkgroupslot = Groupslot.where(student_id: current_account.student_id)
-	# 		if @checkgroupslot.count > 0
-	# 			@has_groupshot = true
-	# 			@checkgroupslot = @checkgroupslot.first
-	# 			@timeslot = Groupshot.find(@checkgroupslot.groupshot_id)
-	# 		else
-	# 			@slots = Groupshot.all.order(:date).order(:start_time)
-	# 			@dates = ["2016-11-16", "2016-11-17", "2016-11-18", "2016-11-19", "2016-11-21", "2016-11-22", "2016-11-23"]
-	# 		end
-	# 	else
-	# 		redirect_to :back
-	# 	end
-	# end
+	def group_signups
+		@checkgroupslot = Groupslot.where(student_id: current_account.student_id)
+		if @checkgroupslot.count > 0
+			@has_groupshot = true
+			@checkgroupslot = @checkgroupslot.first
+			@timeslot = Groupshot.find(@checkgroupslot.groupshot_id)
+		end
+		@slots = Groupshot.all.order(:date).order(:start_time)
+		@dates = ["2016-11-16", "2016-11-17", "2016-11-18", "2016-11-19", "2016-11-21", "2016-11-22", "2016-11-23"]
+	end
 
 	def sign_ups
 		if current_account.timeslot_id.present? 
 			@timeslot = Timeslot.find(current_account.timeslot_id)
-		else
-			case current_account.school
-			when "SOH"
-				@dates = ["2016-10-17", "2016-10-18", "2016-10-19"]
-			when "SOSS"
-				@dates = ["2016-10-20","2016-10-21","2016-10-22","2016-10-24","2016-10-25","2016-10-26"]
-			when "SOSE"
-				@dates = ["2016-10-26", "2016-10-27","2016-10-28","2016-10-29","2016-11-03","2016-11-04"]
-			when "SOM"
-				@dates = ["2016-11-04","2016-11-07","2016-11-08","2016-11-09","2016-11-10","2016-11-14","2016-11-15"]
-			end
+		end
+		case current_account.school
+		when "SOH"
+			@dates = ["2016-10-17", "2016-10-18", "2016-10-19"]
+		when "SOSS"
+			@dates = ["2016-10-20","2016-10-21","2016-10-22","2016-10-24","2016-10-25","2016-10-26"]
+		when "SOSE"
+			@dates = ["2016-10-26", "2016-10-27","2016-10-28","2016-10-29","2016-11-03","2016-11-04"]
+		when "SOM"
+			@dates = ["2016-11-04","2016-11-07","2016-11-08","2016-11-09","2016-11-10","2016-11-14","2016-11-15"]
+		end
 
-			@slots = Timeslot.where(date: @dates).order(:start_time)
-		end	
+		@slots = Timeslot.where(date: @dates).order(:start_time)
 	end
 
 	def search 
@@ -90,29 +84,30 @@ class AccountsController < ApplicationController
 	end
 
 	def sign_up
-		@timeslot = Timeslot.find(params[:slot_id])
+	# 	@timeslot = Timeslot.find(params[:slot_id])
 
-		if @timeslot.slots > 0
+	# 	if @timeslot.slots > 0
 			
-			@timeslot.slots = @timeslot.slots - 1
-			if @timeslot.slots < 0
-				flash[:alert] = "Slot already taken."
-				redirect_to sign_ups_accounts_path
-			else
-				@timeslot.save
-				current_account.timeslot_id = params[:slot_id]
-				current_account.save(validate: false)
-			end
+	# 		@timeslot.slots = @timeslot.slots - 1
+	# 		if @timeslot.slots < 0
+	# 			flash[:alert] = "Slot already taken."
+	# 			redirect_to sign_ups_accounts_path
+	# 		else
+	# 			@timeslot.save
+	# 			current_account.timeslot_id = params[:slot_id]
+	# 			current_account.save(validate: false)
+	# 		end
 
-			redirect_to sign_ups_accounts_path
-		elsif @timeslot.slots == 0
-			flash[:alert] = "Slot already taken."
-			redirect_to sign_ups_accounts_path
-		end
-		
+	# 		redirect_to sign_ups_accounts_path
+	# 	elsif @timeslot.slots == 0
+	# 		flash[:alert] = "Slot already taken."
+	# 		redirect_to sign_ups_accounts_path
+	# 	end
+		flash[:alert] = "You may not sign up."
+		redirect_to :back
 	end
 
-	# def group_signup
+	def group_signup
 	# 	@timeslot = Timeslot.find(params[:slot_id])
 
 	# 	if params[:group_name] != "" or params[:group_name].present?
@@ -139,8 +134,9 @@ class AccountsController < ApplicationController
 	# 		flash[:alert] = "Please enter a group name."
 	# 		redirect_to group_signups_accounts_path
 	# 	end
-
-	# end
+		flash[:alert] = "You may not sign up."
+		redirect_to :back
+	end
 
 	def photoshoot
 		@account = Account.where(student_id: params[:id]).first

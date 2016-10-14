@@ -35,7 +35,7 @@
         <li><a href="#faq">FAQs</a></li>
         <li><a href="#contactus">CONTACT US</a></li>
         <% if account_signed_in? %>
-        	<li><%= link_to "ACCOUNT", accounts_path, method: :get %></li>
+        	<li><%= link_to "SIGN UPS", accounts_path, method: :get %></li>
         	<li><%= link_to "LOG OUT", destroy_account_session_path, :method => :delete %></li>
         <% else %>
 	        <li class="dropdown">
@@ -77,9 +77,9 @@
 	<div class="col-md-12">
 		<div style="margin-bottom:10px;min-width:50%;margin:0 auto;">
 			<h1 style="text-align:center;">Announcements</h1>
-			<h5 style="margin-left:5%;text-align:center;font-weight:bold;">
+			<!-- <h5 style="margin-left:5%;text-align:center;font-weight:bold;">
 				The website is currently locked from login access. You'll be able to log-in during the scheduled photoshoot sign-up date for your school from 7am-11pm.<br><br>
-			</h5>
+			</h5> -->
 			<h5 style="margin-left:5%;text-align:center;font-weight:bold;">
 				For those who do not have an account registered yet, kindly refer to the announcement regarding late registration at: <a href="https://www.facebook.com/ateneoaegis2017/photos/a.1775610819392485.1073741828.1775191932767707/1824884517798448/?type=3&theater">http://tinyurl.com/AEGIS2017LateReg</a><br><br>
 			</h5>
