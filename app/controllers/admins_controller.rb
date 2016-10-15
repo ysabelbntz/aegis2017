@@ -67,8 +67,8 @@ class AdminsController < ApplicationController
 
 		@total_shoots = Account.where.not(timeslot_id: nil).count
 
-
 		@total_groupshots = Groupslot.all.count
+
 	    respond_to do |format|
 	      format.html
 	      format.csv { send_data @accounts_list.to_csv, filename: "accounts-#{Date.today}.csv" }
@@ -98,5 +98,10 @@ class AdminsController < ApplicationController
 			instance_variable_set "@slots_#{timeslot.to_s.underscore}".to_sym, Timeslot.where(date: timeslot)
 			@dates_g << "#{timeslot.to_s.underscore}"
 		end
+
+		respond_to do |format|
+	      format.html
+	      format.xls
+	    end
 	end
 end

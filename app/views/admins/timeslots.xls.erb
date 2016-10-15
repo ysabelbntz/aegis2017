@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+    <Worksheet ss:Name="Sheet1">
+      <% @dates.each do |date| %>
+      <Table>
+        <Row>
+          <Cell><Data ss:Type="String"><%= Date.parse(date.dasherize).strftime("%a, %b %d")%></Data></Cell>
+        </Row>
+        <Row>
+          <Cell><Data ss:Type="String">Time</Data></Cell>
+          <Cell><Data ss:Type="String">Slots</Data></Cell>
+          <Cell><Data ss:Type="String">Students</Data></Cell>
+        </Row>
+      <% instance_variable_get("@slots_#{date}").order(:start_time).each do |slot| %>
+        <Row>
+          <Cell><Data ss:MergeDown="15" ss:Type="String"><%= slot.start_time + " - " + slot.end_time %></Data></Cell>
+          <Cell><Data ss:MergeDown="15" ss:Type="Number"><%= slot.slots %></Data></Cell>
+            <% Account.where(timeslot_id: slot.id).order(:student_id).each do |account | %> 
+                <Row><Cell><Data ss:Type="String">          
+                    <%= account.to_s %><br>
+                </Data></Cell></Row>
+            <% end %>
+        </Row>
+      <% end %>
+      </Table>
+    <% end %>
+    </Worksheet>
+</Workbook>

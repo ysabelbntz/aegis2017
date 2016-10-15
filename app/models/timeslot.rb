@@ -14,4 +14,13 @@ class Timeslot < ActiveRecord::Base
 	def subtract_slots(account)
 		self.slots = self.slots - 1
 	end
+  
+	  def self.to_csv(options = {})
+	    CSV.generate(options) do |csv|
+	      csv << column_names
+	      all.each do |timeslots|
+	        csv << timeslots.attributes.values_at(*column_names)
+	      end
+	    end
+	  end
 end
