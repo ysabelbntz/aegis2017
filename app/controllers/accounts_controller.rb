@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
 		@events = Event.where(description: ["All", school]).order(:start_time)
 		@timeslot = Timeslot.find_by(id: current_account.timeslot_id)
 		
-		@groupslot = Groupslot.find_by(student_id: current_account.student_id)
+		# @groupslot = Groupslot.find_by(student_id: current_account.student_id)
 		
 		if @groupslot.present?
 			@groupshot = Groupshot.find_by(id: @groupslot.groupshot_id)
@@ -28,19 +28,17 @@ class AccountsController < ApplicationController
 		if current_account.timeslot_id.present? 
 			@timeslot = Timeslot.find(current_account.timeslot_id)
 		end
-		
-		# case current_account.school
-		# when "SOH"
-		# 	@dates = ["2016-10-17", "2016-10-18", "2016-10-19"]
-		# when "SOSS"
-		# 	@dates = ["2016-10-20","2016-10-21","2016-10-22","2016-10-24","2016-10-25","2016-10-26"]
-		# when "SOSE"
-		# 	@dates = ["2016-10-26", "2016-10-27","2016-10-28","2016-10-29","2016-11-03","2016-11-04"]
-		# when "SOM"
-		# 	@dates = ["2016-11-04","2016-11-07","2016-11-08","2016-11-09","2016-11-10","2016-11-14","2016-11-15"]
-		# end
+		case current_account.school
+		when "SOH"
+			@dates = ["2016-10-17", "2016-10-18", "2016-10-19"]
+		when "SOSS"
+			@dates = ["2016-10-20","2016-10-21","2016-10-22","2016-10-24","2016-10-25","2016-10-26"]
+		when "SOSE"
+			@dates = ["2016-10-26", "2016-10-27","2016-10-28","2016-10-29","2016-11-03","2016-11-04"]
+		when "SOM"
+			@dates = ["2016-11-04","2016-11-07","2016-11-08","2016-11-09","2016-11-10","2016-11-14","2016-11-15"]
+		end
 
-		@dates = ["2016-10-17", "2016-10-18", "2016-10-19","2016-10-20","2016-10-21","2016-10-22","2016-10-24","2016-10-25","2016-10-26", "2016-10-27","2016-10-28","2016-10-29","2016-11-03","2016-11-04","2016-11-07","2016-11-08","2016-11-09","2016-11-10","2016-11-14","2016-11-15"]
 		@slots = Timeslot.where(date: @dates).order(:start_time)
 	end
 
@@ -192,5 +190,19 @@ class AccountsController < ApplicationController
 	                    right:             10 }
 	      end
 	    end
+	end
+
+	def timeslots
+		@dates = []
+		@dates_g = []
+		Timeslot.where(type: nil).distinct(:date).order(:date).pluck(:date).each do |timeslot|
+			instance_variable_set "@slots_#{timeslot.to_s.underscore}".to_sym, Timeslot.where(date: timeslot)
+			@dates << "#{timeslot.to_s.underscore}"
+		end
+
+		Groupshot.distinct(:date).order(:date).pluck(:date).each do |timeslot|
+			instance_variable_set "@slots_#{timeslot.to_s.underscore}".to_sym, Timeslot.where(date: timeslot)
+			@dates_g << "#{timeslot.to_s.underscore}"
+		end
 	end
 end
