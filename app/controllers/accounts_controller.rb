@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
 		@events = Event.where(description: ["All", school]).order(:start_time)
 		@timeslot = Timeslot.find_by(id: current_account.timeslot_id)
 		
-		# @groupslot = Groupslot.find_by(student_id: current_account.student_id)
+		@groupslot = Groupslot.find_by(student_id: current_account.student_id)
 		
 		if @groupslot.present?
 			@groupshot = Groupshot.find_by(id: @groupslot.groupshot_id)
@@ -204,5 +204,19 @@ class AccountsController < ApplicationController
 			instance_variable_set "@slots_#{timeslot.to_s.underscore}".to_sym, Timeslot.where(date: timeslot)
 			@dates_g << "#{timeslot.to_s.underscore}"
 		end
+	end
+
+	def add_writeup
+		@account = current_account
+	end
+
+	def update
+		@account = current_account
+		@account.update_attributes!(account_params)
+		redirect_to :back
+	end
+
+	def account_params
+	  params.require(:account).permit(:writeup)
 	end
 end

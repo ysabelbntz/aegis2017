@@ -6,6 +6,7 @@ class Account < ActiveRecord::Base
   belongs_to :timeslot
   belongs_to :groupshot
   # validates_uniqueness_of :email, :student_id
+  validates :writeup, length: { maximum: 500 }
   
   def to_s
     "#{self.student_id}, #{self.name}, #{self.yr} - #{self.course}"
