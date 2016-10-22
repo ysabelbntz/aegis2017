@@ -210,13 +210,17 @@ class AccountsController < ApplicationController
 		@account = current_account
 	end
 
+	def edit_info
+		@account = current_account
+	end
+
 	def update
 		@account = current_account
 		@account.update_attributes!(account_params)
-		redirect_to :back
+		redirect_to root_url
 	end
 
 	def account_params
-	  params.require(:account).permit(:writeup)
+	  params.require(:account).permit(:writeup, :double_major, :minor, :cellphone_number)
 	end
 end

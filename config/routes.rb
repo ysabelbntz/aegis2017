@@ -54,6 +54,7 @@ Rails.application.routes.draw do
       post 'reschedule'
       get 'timeslots'
       get 'add_writeup'
+      get 'edit_info'
     end
   end
 

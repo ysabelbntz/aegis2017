@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007050620) do
+ActiveRecord::Schema.define(version: 20161022142013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 20161007050620) do
     t.integer  "timeslot_id"
     t.integer  "groupshot_id"
     t.boolean  "rescheduled"
+    t.string   "minor"
+    t.string   "cellphone_number"
+    t.string   "double_major"
   end
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
@@ -74,15 +77,6 @@ ActiveRecord::Schema.define(version: 20161007050620) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  create_table "groupslots", force: :cascade do |t|
-    t.integer "groupshot_id", null: false
-    t.integer "student_id",   null: false
-    t.string  "group_name",   null: false
-  end
-
-  add_index "groupslots", ["groupshot_id"], name: "index_groupslots_on_groupshot_id", using: :btree
-  add_index "groupslots", ["student_id"], name: "index_groupslots_on_student_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string  "name"
