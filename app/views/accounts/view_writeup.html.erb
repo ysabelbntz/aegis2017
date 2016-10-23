@@ -28,30 +28,21 @@
 <div class="container with-fixed-navbar">
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 col-md-offset-2">
-      <h1>Submit Writeup</h1>
-      <h5>Writeups should not exceed more than 500 CWS (Characters with Spaces)</h5>
+      <h1>View Writeup</h1>
     </div>
   </div>
 
   <div class="row">
-    <%= simple_form_for @account do |f| %>
-        <% if @account.errors.any? %>
-          <div id="error_explanation">
-            <ul>
-            <% @account.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
-        <div class="field col-xs-12">
-          <%= f.label :writeup, "Writeup" %>
-          <%= f.text_area :writeup %>
-        </div>
-        <div class="actions col-xs-offset-2 col-xs-8">
-          <%= f.submit :class => "event-submit"%>
-          <%= button_to "Back to View Writeup", view_writeup_accounts_path, method: :get%>
-        </div>
-    <% end %>
+    <div class="row">
+      <h4>Current Writeup</h4>
+      <% if @current_account.writeup.present? %>
+        <p><%=current_account.writeup %></p>
+      <% else %>
+        <p>No writeup submitted.</p>
+      <% end %>
+    </div>
+    <div class="row">
+      <%= button_to "Submit A Writeup", add_writeup_accounts_path, method: :get%>
+    </div>
   </div>
 </div>

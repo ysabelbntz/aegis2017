@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       post 'photoshoot'
       post 'reschedule'
       get 'timeslots'
+      get 'view_writeup'
       get 'add_writeup'
       get 'edit_info'
     end

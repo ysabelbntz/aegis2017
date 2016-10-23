@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
 		@events = Event.where(description: ["All", school]).order(:start_time)
 		@timeslot = Timeslot.find_by(id: current_account.timeslot_id)
 		
-		@groupslot = Groupslot.find_by(student_id: current_account.student_id)
+		#@groupslot = Groupslot.find_by(student_id: current_account.student_id)
 		
 		if @groupslot.present?
 			@groupshot = Groupshot.find_by(id: @groupslot.groupshot_id)
@@ -206,6 +206,10 @@ class AccountsController < ApplicationController
 		end
 	end
 
+	def view_writeup
+		@account = current_account
+	end
+
 	def add_writeup
 		@account = current_account
 	end
@@ -217,7 +221,11 @@ class AccountsController < ApplicationController
 	def update
 		@account = current_account
 		@account.update_attributes!(account_params)
-		redirect_to root_url
+		if @account.writeup_changed?
+			redirect_to index_accounts_path
+		else
+			redirect_to view_writeup_accounts_path
+		end
 	end
 
 	def account_params
