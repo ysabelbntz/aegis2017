@@ -36,7 +36,11 @@
       </div>
       <div class="row">
         <h4><%=current_account.school %></h4>
-        <h4><%="#{current_account.yr} - " + "#{current_account.course}" %></h4>
+        <% if @current_account.full_course.present? %>
+          <h4><%="#{current_account.yr} - " + "#{current_account.full_course}" %></h4>
+        <% else %>
+          <h4><%="#{current_account.yr} - " + "#{current_account.course}" %></h4>
+        <% end %>
         <% if @current_account.double_major.present? %>
           <h4><%=current_account.double_major %></h4>
         <% end %>

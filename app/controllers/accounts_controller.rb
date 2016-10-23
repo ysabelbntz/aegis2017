@@ -222,13 +222,15 @@ class AccountsController < ApplicationController
 		@account = current_account
 		@account.update_attributes!(account_params)
 		if @account.writeup_changed?
-			redirect_to index_accounts_path
+			flash[:alert] = "Writeup submitted."
+			redirect_to :back
 		else
-			redirect_to view_writeup_accounts_path
+			flash[:alert] = "Account information changed."
+			redirect_to :back
 		end
 	end
 
 	def account_params
-	  params.require(:account).permit(:writeup, :double_major, :minor, :cellphone_number)
+	  params.require(:account).permit(:writeup, :double_major, :minor, :cellphone_number, :full_course)
 	end
 end

@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to 'HOME', root_path, method: :get %></li>
-        <li class="active"><%= link_to 'ACCOUNT', accounts_path, method: :get %></li>
+        <li class=""><%= link_to 'ACCOUNT', accounts_path, method: :get %></li>
         <li class=""><%= link_to 'PHOTOSHOOT SIGN UPS', sign_ups_accounts_path, method: :get %></li>
         <li class=""><%= link_to 'GROUPSHOOT SIGN UPS', group_signups_accounts_path, method: :get %></li>
         <li><%= link_to "LOG OUT", destroy_account_session_path, :method => :delete %></a>
@@ -29,7 +29,6 @@
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 col-md-offset-2">
       <h1>Edit Account Information</h1>
-      <h5>Writeups should not exceed more than 500 CWS (Characters with Spaces)</h5>
     </div>
   </div>
 
@@ -41,11 +40,15 @@
         </div>
         <div class="field col-xs-12">
           <%= f.label :name, "Name" %>
-          <%= current_account.name.downcase %>
+          <%= current_account.name %>
         </div>
         <div class="field col-xs-12">
-          <%= f.label :course, "Year and Course" %>
-          <%="#{current_account.yr} - " + "#{current_account.course}" %>
+          <%= f.label :course, "Year" %>
+          <%="#{current_account.yr}" %>
+        </div>
+        <div class="field col-xs-12">
+          <%= f.label :full_course, "Full Course Name" %>
+          <%= f.text_area :full_course %>
         </div>
         <div class="field col-xs-12">
           <%= f.label :double_major, "Second Major" %>
@@ -61,10 +64,11 @@
         </div>
         <div class="field col-xs-12">
           <%= f.label :email, "Email" %>
-          <%="#{current_account.yr} - " + "#{current_account.course}" %>
+          <%="#{current_account.email}" %>
         </div>
         <div class="actions">
           <%= f.submit :class => "event-submit"%>
+          <%= button_to "Back to Main Page", accounts_path, method: :get%>
         </div>
     <% end %>
   </div>
