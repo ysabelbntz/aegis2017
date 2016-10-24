@@ -221,13 +221,20 @@ class AccountsController < ApplicationController
 	def update
 		@account = current_account
 		@account.update_attributes!(account_params)
-		if @account.writeup_changed?
-			flash[:alert] = "Writeup submitted."
-			redirect_to :back
+		if @account.save
+			if @account.writeup_changed?
+				redirect_to view_writeup_accounts_path
+			else
+				redirect_to accounts_path 
+			end
 		else
-			flash[:alert] = "Account information changed."
-			redirect_to :back
+			if @account.writeup_changed?
+				redirect_to add_writeup_accounts_path
+			else
+				redirect_to edit_info_accounts_path
+			end
 		end
+		
 	end
 
 	def account_params

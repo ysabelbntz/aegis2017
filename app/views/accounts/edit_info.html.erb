@@ -34,41 +34,41 @@
 
   <div class="row">
     <%= simple_form_for @account do |f| %>
-        <div class="field col-xs-12">
+        <div class="field col-xs-offset-3 col-xs-6">
           <%= f.label :student_id, "ID Number" %>
           <%= current_account.student_id %>
         </div>
-        <div class="field col-xs-12">
+        <div class="field col-xs-offset-3 col-xs-6">
           <%= f.label :name, "Name" %>
           <%= current_account.name %>
         </div>
-        <div class="field col-xs-12">
+        <div class="field col-xs-offset-3 col-xs-6">
           <%= f.label :course, "Year" %>
           <%="#{current_account.yr}" %>
         </div>
-        <div class="field col-xs-12">
+        <div class="field col-xs-offset-3 col-xs-6">
           <%= f.label :full_course, "Full Course Name" %>
           <%= f.text_area :full_course %>
         </div>
-        <div class="field col-xs-12">
+        <div class="field col-xs-offset-3 col-xs-6">
           <%= f.label :double_major, "Second Major" %>
           <%= f.text_area :double_major %>
         </div>
-        <div class="field col-xs-12">
+        <div class="field col-xs-offset-3 col-xs-6">
           <%= f.label :minor, "Minor/Specialization" %>
           <%= f.text_area :minor %>
         </div>
-        <div class="field col-xs-12">
+        <div class="field col-xs-offset-3 col-xs-6">
           <%= f.label :cellphone_number, "Cellphone Number" %>
           <%= f.text_area :cellphone_number %>
         </div>
-        <div class="field col-xs-12">
+        <div class="field col-xs-offset-3 col-xs-6">
           <%= f.label :email, "Email" %>
           <%="#{current_account.email}" %>
         </div>
-        <div class="actions">
-          <%= f.submit :class => "event-submit"%>
-          <%= button_to "Back to Main Page", accounts_path, method: :get%>
+        <div class="actions col-xs-offset-3 col-xs-6">
+          <%= f.submit :class => "account-submit" %>
+          <%= button_to "Back To Main Page", accounts_path, method: :get %>
         </div>
     <% end %>
   </div>
