@@ -31,17 +31,18 @@
       <h1>View Writeup</h1>
     </div>
   </div>
-
+  <br>
   <div class="row">
-    <div class="row">
-      <h4>Current Writeup</h4>
+    <div class="col-xs-6 col-xs-offset-2 col-md-offset-3">
+      <h4>Current Writeup:</h4>
       <% if @current_account.writeup.present? %>
         <p><%=current_account.writeup %></p>
       <% else %>
         <p>No writeup submitted.</p>
       <% end %>
     </div>
-    <div class="row">
+    &nbsp;
+    <div class="col-xs-9 col-xs-offset-4 col-md-offset-5">
       <%= button_to "Submit A Writeup", add_writeup_accounts_path, method: :get%>
     </div>
   </div>
