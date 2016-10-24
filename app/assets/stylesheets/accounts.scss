@@ -167,7 +167,7 @@
 }
 
 .account-submit {
-	width: 35%;
+	width: 25%;
 }
 
 .edit-account label{
@@ -176,4 +176,13 @@
   text-align: right;
   margin-right: 0.5em;
   display: block
+}
+
+.writeup, .edit-info {
+	font-family: "Roboto";
+}
+
+.writeup-body {
+	font-family: "Roboto";
+	font-size: 14px;
 }
