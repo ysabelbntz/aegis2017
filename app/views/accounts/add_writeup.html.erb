@@ -48,8 +48,8 @@
           <%= f.text_area :writeup, cols: "90", rows: "8" %>
         </div>
         <div class="actions col-xs-offset-4 col-xs-6">
-          <%= f.submit %>
-          <%= button_to "Back to View Writeup", view_writeup_accounts_path, method: :get%>
+          <%= f.submit :class => "writeup-submit", :name => "writeup_submit", :value => "Save Writeup" %>
+          <%= button_to "Back to View Writeup", view_writeup_accounts_path, :name => "writeup_back", method: :get%>
         </div>
     <% end %>
   </div>
