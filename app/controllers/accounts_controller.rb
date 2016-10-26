@@ -214,12 +214,14 @@ class AccountsController < ApplicationController
 	end
 
 	def view_writeup
+		@account = current_account
 		if !current_account.can_write
 			redirect_to accounts_path
 		end
 	end
 
 	def add_writeup
+		@account = current_account
 		if !current_account.can_write
 			redirect_to accounts_path
 		end

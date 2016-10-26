@@ -6,8 +6,8 @@ class Account < ActiveRecord::Base
   belongs_to :timeslot
   belongs_to :groupshot
   # validates_uniqueness_of :email, :student_id
-  validates :writeup, length: { maximum: 500 }# , message: "Writeup must not be more than 500 characters."
-  validates :cellphone_number, :numericality => true # , message: "Phone number must be numeric."
+  validates :writeup, length: { maximum: 500 }
+  validates :cellphone_number, :numericality => true, :allow_nil => true
   
   def to_s
     "#{self.student_id}, #{self.name}, #{self.yr} - #{self.course}"
@@ -163,7 +163,7 @@ class Account < ActiveRecord::Base
 
     def self.to_csv(options = {})
       CSV.generate(options) do |csv|
-        columns = %w(student_id name yr course school writeup)
+        columns = %w(student_id name yr school full_course double_major minor cellphone_number email writeup)
         csv << columns
         all.each do |account|
           csv << account.attributes.values_at(*columns)

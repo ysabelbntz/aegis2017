@@ -42,7 +42,11 @@
       <% end %>
     </div>
     <div class="col-xs-9 col-xs-offset-4 col-md-offset-5">
-      <%= button_to "Submit A Writeup", add_writeup_accounts_path, method: :get%>
+      <% if @account.writeup.present? %>
+        <%= button_to "Edit Writeup", add_writeup_accounts_path, method: :get %>
+      <% else %>
+        <%= button_to "Submit A Writeup", add_writeup_accounts_path, method: :get %>
+      <% end %>
     </div>
   </div>
 </div>
