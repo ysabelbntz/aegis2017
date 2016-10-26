@@ -235,6 +235,10 @@ class AccountsController < ApplicationController
 			@account = current_account
 			@account.update_attributes!(account_params)
 			redirect_to view_writeup_accounts_path
+		elsif params[:account_submit]
+			@account = current_account
+			@account.update_attributes!(account_params)
+			redirect_to accounts_path
 		else
 			redirect_to view_writeup_accounts_path
 		end
