@@ -101,6 +101,14 @@ $('.accounts.group_signups').ready(function(){
 	});
 });
 
+$('.accounts.add_writeup').ready(function(){
+	$(".writeup").on('change', function() {
+	    var cws = $('.cws').val(500 - $(this).val().length);
+	    return cws;
+	});
+});
+
+
 $('.registrations.new').ready(function () {
 	var terms_read = false;
 	var terms_accepted = false;
@@ -264,7 +272,8 @@ $(document).ready(function () {
 	        }
 	    });
 	}
-	
+
+
   	document.onscroll = scroll;
 
 });

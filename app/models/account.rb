@@ -6,8 +6,8 @@ class Account < ActiveRecord::Base
   belongs_to :timeslot
   belongs_to :groupshot
   # validates_uniqueness_of :email, :student_id
-  validates :writeup, length: { maximum: 500 }
-  validates :cellphone_number, :numericality => true
+  validates :writeup, length: { maximum: 500 }# , message: "Writeup must not be more than 500 characters."
+  validates :cellphone_number, :numericality => true # , message: "Phone number must be numeric."
   
   def to_s
     "#{self.student_id}, #{self.name}, #{self.yr} - #{self.course}"
