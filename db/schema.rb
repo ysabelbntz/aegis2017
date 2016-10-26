@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023135910) do
+ActiveRecord::Schema.define(version: 20161026040729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,10 @@ ActiveRecord::Schema.define(version: 20161023135910) do
     t.date    "date"
     t.integer "slots"
     t.string  "type"
+  end
+
+  create_table "writeup_accounts", force: :cascade do |t|
+    t.integer "idnumber"
   end
 
   add_foreign_key "accounts", "timeslots"

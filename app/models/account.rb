@@ -13,6 +13,14 @@ class Account < ActiveRecord::Base
     "#{self.student_id}, #{self.name}, #{self.yr} - #{self.course}"
   end
 
+  def can_write
+    if WriteupAccount.find_by(idnumber: self.student_id).nil?
+      return false
+    else
+      return true
+    end
+  end
+
   def get_timeslot
     Timeslot.find_by(id: self.timeslot_id).to_s
   end
