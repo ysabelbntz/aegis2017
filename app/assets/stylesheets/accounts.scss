@@ -185,4 +185,19 @@
 .writeup-body {
 	font-family: "Roboto";
 	font-size: 14px;
+	white-space: pre-line;
+}
+
+.writeup div {
+	height: auto;
+}
+
+.disabledwriteup {
+	background:grey;
+	color:white;
+}
+
+.writeup.form-control {
+	margin-top: 30px;
+	width: 100%;
 }

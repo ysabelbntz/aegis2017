@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
 	skip_before_action :verify_authenticity_token
+	before_filter :check_for_cancel, :only => [:add_writeup, :edit_info]
 
 	def index
 		school = current_account.school
@@ -192,6 +193,12 @@ class AccountsController < ApplicationController
 	    end
 	end
 
+	def check_for_cancel
+	  if params[:commit] == "Cancel"
+	    redirect_to view_writeup_accounts_path
+	  end
+	end
+
 	def timeslots
 		@dates = []
 		@dates_g = []
@@ -207,7 +214,6 @@ class AccountsController < ApplicationController
 	end
 
 	def view_writeup
-		@account = current_account
 	end
 
 	def add_writeup
@@ -219,12 +225,13 @@ class AccountsController < ApplicationController
 	end
 
 	def update
-		@account = current_account
-		@account.update_attributes!(account_params)
-		if params[:writeup_submit] || params[:writeup_back]			
+		
+		if params[:writeup_submit]
+			@account = current_account
+			@account.update_attributes!(account_params)
 			redirect_to view_writeup_accounts_path
 		else
-			redirect_to accounts_path 
+			redirect_to view_writeup_accounts_path
 		end
 	end
 

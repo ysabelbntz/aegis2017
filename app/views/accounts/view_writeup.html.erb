@@ -35,7 +35,7 @@
   <div class="row writeup">
     <div class="col-xs-6 col-xs-offset-2 col-md-offset-3">
       <h4>Current Writeup:</h4>
-      <% if @current_account.writeup.present? %>
+      <% if current_account.writeup.present? %>
         <p class="writeup-body"><%=current_account.writeup %></p>
       <% else %>
         <p class="writeup-body">No writeup submitted.</p>

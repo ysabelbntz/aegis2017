@@ -102,10 +102,62 @@ $('.accounts.group_signups').ready(function(){
 });
 
 $('.accounts.add_writeup').ready(function(){
-	$(".writeup").on('change', function() {
-	    var cws = $('.cws').val(500 - $(this).val().length);
-	    return cws;
-	});
+	var text_max = 500;
+	var originaltext = $('.writeup').text();
+
+    $('.cws').html(text_max - ($('.writeup').val().length) + ' characters remaining');
+
+
+    $('.writeup').keyup(function() {
+        var text_length = $('.writeup').val().length;
+        var text_remaining = text_max - text_length;
+
+        $('.cws').html(text_remaining + ' characters remaining');
+    });
+
+
+    $('#genericwriteup,#emptywriteup').click(function(){
+    	$('.writeup').attr("readonly","readonly"); 
+    });
+
+    $('#genericwriteup').click(function(){
+    	$('.writeup').text("[GENERIC]");
+    	$('.cws').css("visibility", "hidden");
+    });
+
+    $('#emptywriteup').click(function(){
+    	$('.writeup').text("[EMPTY]");
+    	$('.cws').css("visibility", "hidden");
+    });
+
+    $('#originalwriteup').click(function(){
+    	$('.writeup').removeAttr("readonly");
+    	switch (originaltext) {
+	    	case "[GENERIC]":
+	    		$('.writeup').text("");
+	    		break;
+	    	case "[EMPTY]":
+	    		$('.writeup').text("");
+	    		break;
+	    	default: 
+	    		$('.writeup').text(originaltext);
+	    		break;
+	    }
+    	
+    	$('.cws').css("visibility", "visible");
+    });
+
+     switch ($('.writeup').text()) {
+    	case "[GENERIC]":
+    		$('#genericwriteup').click();
+    		break;
+    	case "[EMPTY]":
+    		$('#emptywriteup').click();
+    		break;
+    	default: 
+    		$('#originalwriteup').click();
+    		break;
+    }
 });
 
 

@@ -34,19 +34,31 @@
   </div>
   <br>
   <div class="row">
-    <%= simple_form_for @account do |f| %>
-        <% if @account.errors.any? %>
-          <% @account.errors.full_messages.each do |message| %>
+    <%= simple_form_for current_account do |f| %>
+        <% if current_account.errors.any? %>
+          <% current_account.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         <% end %>
-        <div class="field col-xs-offset-2 col-xs-6">
-          <%= f.text_area :writeup, cols: "120", rows: "5", :class => "writeup", :maxlength => 500 %>
+        <div class="field col-md-offset-3 col-md-6 col-xs-10 col-xs-offset-1">
+
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="originalwriteup" value="option3"> Original writeup
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="emptywriteup" value="option1"> Empty writeup
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="genericwriteup" value="option2"> Generic writeup
+          </label>
+          <div class="form-group">
+            <%= f.text_area :writeup, rows: "5", :class => "writeup form-control", :maxlength => 500 %>
+          </div>
           <p class="cws"></p>
         </div>
-        <div class="actions col-xs-offset-4 col-xs-6">
+        <div class="actions col-md-offset-4 col-md-6 col-xs-10 col-xs-offset-1">
           <%= f.submit :class => "writeup-submit", :name => "writeup_submit", :value => "Save Writeup" %>
-          <%= button_to "Back to View Writeup", view_writeup_accounts_path, :name => "writeup_back", method: :get%>
+          <%= button_to "Cancel", :back, :name => "cancel"%>
         </div>
     <% end %>
   </div>
