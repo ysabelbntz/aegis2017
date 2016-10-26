@@ -101,7 +101,6 @@ $('.accounts.group_signups').ready(function(){
 	});
 });
 
-
 $('.registrations.new').ready(function () {
 	var terms_read = false;
 	var terms_accepted = false;
@@ -265,8 +264,7 @@ $(document).ready(function () {
 	        }
 	    });
 	}
-
-
+	
   	document.onscroll = scroll;
 
 });

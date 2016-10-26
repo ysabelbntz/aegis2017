@@ -36,16 +36,13 @@
   <div class="row">
     <%= simple_form_for @account do |f| %>
         <% if @account.errors.any? %>
-          <div id="error_explanation">
-            <ul>
-            <% @account.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
+          <% @account.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
         <% end %>
         <div class="field col-xs-offset-2 col-xs-6">
-          <%= f.text_area :writeup, cols: "90", rows: "8" %>
+          <%= f.text_area :writeup, cols: "120", rows: "5", :class => "writeup", :maxlength => 500 %>
+          <p class="cws"></p>
         </div>
         <div class="actions col-xs-offset-4 col-xs-6">
           <%= f.submit :class => "writeup-submit", :name => "writeup_submit", :value => "Save Writeup" %>
