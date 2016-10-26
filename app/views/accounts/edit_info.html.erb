@@ -68,7 +68,7 @@
             <%= f.label :full_course, "Full Course Name" %>
           </div>
           <div class="col-xs-5">
-            <%= f.text_area :full_course %>
+            <%= f.text_area :full_course, cols: "30" %>
           </div>
         </div>
         <div class="field col-xs-offset-3 col-xs-8">
@@ -76,7 +76,7 @@
             <%= f.label :double_major, "Second Major" %>
           </div>
           <div class="col-xs-5">
-            <%= f.text_area :double_major %>
+            <%= f.text_area :double_major, cols: "30" %>
           </div>
         </div>
         <div class="field col-xs-offset-3 col-xs-8">
@@ -84,7 +84,7 @@
             <%= f.label :minor, "Minor/Specialization" %>
           </div>
           <div class="col-xs-5">
-            <%= f.text_area :minor %>
+            <%= f.text_area :minor, cols: "30" %>
           </div>
         </div>
         <div class="field col-xs-offset-3 col-xs-8">
@@ -92,7 +92,7 @@
             <%= f.label :cellphone_number, "Cellphone Number" %>
           </div>
           <div class="col-xs-5">
-            <%= f.text_area :cellphone_number %>
+            <%= f.number_field :cellphone_number %>
           </div>
         </div>
         <div class="field col-xs-offset-3 col-xs-8">
