@@ -163,9 +163,10 @@ class Account < ActiveRecord::Base
 
     def self.to_csv(options = {})
       CSV.generate(options) do |csv|
-        csv << column_names
+        columns = %w(student_id name yr course school writeup)
+        csv << columns
         all.each do |account|
-          csv << account.attributes.values_at(*column_names)
+          csv << account.attributes.values_at(*columns)
         end
       end
     end
