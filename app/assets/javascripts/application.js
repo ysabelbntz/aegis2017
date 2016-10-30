@@ -71,6 +71,7 @@ $('.admins.accounts').ready(function(){
 		            $('#student-account').text(student.account);
 		            $('#student-email').text(student.email);
 		            $('#student-timeslot').text(student.get_timeslot);
+		            $('#student-writeup').text(student.writeup);
 	        	} else {
 	        		$('#student-name').text("Not found");
 	        	}
@@ -84,6 +85,7 @@ $('.admins.accounts').ready(function(){
 	        $('#student-account').text("");
 	        $('#student-email').text("");
 	        $('#student-timeslot').text("");
+	        $('#student-writeup').text("");
 	    }
 	  }); 
 });

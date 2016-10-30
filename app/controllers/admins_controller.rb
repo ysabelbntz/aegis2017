@@ -39,6 +39,12 @@ class AdminsController < ApplicationController
 
 	def index
 
+		@soh_writeups = Account.where(school: "SOH").where.not(writeup: nil).count
+		@som_writeups = Account.where(school: "SOM").where.not(writeup: nil).count
+		@sose_writeups = Account.where(school: "SOSE").where.not(writeup: nil).count
+		@soss_writeups = Account.where(school: "SOSS").where.not(writeup: nil).count
+		@total_writeups = @soh_writeups + @som_writeups + @sose_writeups + @soss_writeups
+
 		@soh_students = Student.where(school: "SOH").count
 		@som_students = Student.where(school: "SOM").count
 		@sose_students = Student.where(school: "SOSE").count

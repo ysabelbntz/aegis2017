@@ -201,3 +201,16 @@
 	margin-top: 30px;
 	width: 100%;
 }
+
+.shoot-dropdown {
+	background-color: $blue!important;
+	
+	li {
+		a {
+			font-weight: 900!important;
+			font-family: "Roboto";
+		}
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}

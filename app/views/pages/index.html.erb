@@ -35,7 +35,7 @@
         <li><a href="#faq">FAQs</a></li>
         <li><a href="#contactus">CONTACT US</a></li>
         <% if account_signed_in? %>
-        	<li><%= link_to "SIGN UPS", accounts_path, method: :get %></li>
+        	<li><%= link_to "SIGN UPS AND WRITEUPS", accounts_path, method: :get %></li>
         	<li><%= link_to "LOG OUT", destroy_account_session_path, :method => :delete %></li>
         <% else %>
 	        <li class="dropdown">
@@ -64,9 +64,7 @@
 				    </li>
 	          	</ul>
 	        </li>
-        	<% if Time.current.in_time_zone('Hong Kong').between?(Time.new(2016, 10, 9, 16).in_time_zone('Hong Kong'), Time.new(2016, 10, 13, 15).in_time_zone('Hong Kong')) %>
-        		<li><%= link_to 'REGISTER', new_account_registration_path, method: :get %></li>
-        	<% end %>
+    		<li><%= link_to 'REGISTER', new_account_registration_path, method: :get %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
