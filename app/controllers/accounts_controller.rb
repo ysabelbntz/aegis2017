@@ -214,9 +214,21 @@ class AccountsController < ApplicationController
 
 	def add_writeup
 		@account = current_account
-		if !current_account.can_write
+
+		if current_account.final_writeup
+			redirect_to view_writeup_accounts_path
+		elsif !current_account.can_write
 			redirect_to accounts_path
 		end
+	end
+
+	def submit_writeup
+
+	end
+
+	def submit_final_writeup 
+		current_account.update(final_writeup:  true)
+		redirect_to view_writeup_accounts_path
 	end
 
 	def edit_info

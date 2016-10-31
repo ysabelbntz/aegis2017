@@ -52,6 +52,23 @@ $('.admins.students').ready(function(){
 	  }); 
 });
 
+$('.accounts.submit_writeup').ready(function(){
+	$('#submit-final-writeup').attr("disabled", "disabled");
+	$('#submit-final-writeup').addClass('disable-button');
+	$('#terms-writeup').click(function() {
+	    var $this = $(this);
+ 
+	    if ($this.is(':checked')) {
+	    	$('#submit-final-writeup').removeAttr("disabled", "disabled");
+	    	$('#submit-final-writeup').removeClass('disable-button');
+	    } else {
+	    	$('#submit-final-writeup').attr("disabled", "disabled");
+	    	$('#submit-final-writeup').addClass('disable-button');
+	    }
+	});
+
+});
+
 $('.admins.accounts').ready(function(){
 	$('#search_account').on('input', function() {
 	    var value = $(this).val();

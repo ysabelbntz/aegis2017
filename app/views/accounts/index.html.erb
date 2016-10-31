@@ -79,7 +79,10 @@
       <br>
       <h3>Yearbook Writeup</h3>
       <h4 style="white-space: pre-line;"><%= current_account.writeup %></h4>
-      <%= button_to "EDIT WRITEUP", view_writeup_accounts_path, method: :get%>
+      <% if !current_account.final_writeup %>
+        <%= button_to "Submit your final writeup", view_writeup_accounts_path, method: :get%>
+      <% end %>
+
     </div>
   </div>
 </div>

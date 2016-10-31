@@ -61,6 +61,11 @@
 	}
 }
 
+.disable-button {
+	background:grey;
+	color: white;
+	&:hover {background-color: grey;}
+}
 
 	.regform_fields {
 		padding: 10px 20px;
@@ -88,6 +93,11 @@
 		border-right:1px solid black;
 		min-height: 50vh;
 	}	
+}
+
+.writeup a {
+	color: $blue!important;
+	text-decoration: underline!important;
 }
 
 .accounts.sign_ups table, .accounts.group_signups table{
