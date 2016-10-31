@@ -80,15 +80,6 @@ ActiveRecord::Schema.define(version: 20161031014210) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "groupslots", force: :cascade do |t|
-    t.integer "groupshot_id", null: false
-    t.integer "student_id",   null: false
-    t.string  "group_name",   null: false
-  end
-
-  add_index "groupslots", ["groupshot_id"], name: "index_groupslots_on_groupshot_id", using: :btree
-  add_index "groupslots", ["student_id"], name: "index_groupslots_on_student_id", using: :btree
-
   create_table "students", force: :cascade do |t|
     t.string  "name"
     t.integer "yr"
