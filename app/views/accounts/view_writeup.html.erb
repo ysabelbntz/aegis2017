@@ -50,7 +50,7 @@
       <% else %>
         <p class="writeup-body">No writeup submitted.</p>
       <% end %>
-      <% if current_account.final_writeup == false %>
+      <% if !current_account.final_writeup%>
         <% if @account.writeup.present? %>
             <%= button_to "Edit Writeup", add_writeup_accounts_path, method: :get, class: "center" %>
           <br>
