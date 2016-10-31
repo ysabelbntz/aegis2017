@@ -3,8 +3,8 @@ class AccountsController < ApplicationController
 	before_filter :check_for_cancel, :only => [:add_writeup, :edit_info]
 
 	def index
-		school = current_account.school
-		@events = Event.where(description: ["All", school]).order(:start_time)
+		@school = current_account.school
+		@events = Event.where(description: ["All", @school]).order(:start_time)
 		@timeslot = Timeslot.find_by(id: current_account.timeslot_id)
 		
 		@groupslot = Groupslot.find_by(student_id: current_account.student_id)
