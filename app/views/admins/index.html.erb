@@ -38,7 +38,7 @@
           <th class="right-align">Number of accounts</th>
           <th class="right-align">Accounts %</th>
           <th class="right-align">Photoshoot sign ups</th>
-          <th class="right-align">Writeups</th>
+          <th class="right-align">Finalized Writeups</th>
           <th class="right-align">Group shots</th>
           
         </tr>
@@ -84,8 +84,8 @@
           <td class="right-align text-bold"><%=@accounts%></td>
           <td class="right-align text-bold"><%=(@accounts/@students.to_f).round(2)%></td>
           <td class="right-align text-bold"><%=@total_shoots%></td>
-          <td class="right-align text-bold"><%=@total_groupshots%></td>
           <td class="right-align text-bold"><%=@total_writeups%></td>
+          <td class="right-align text-bold"><%=@total_groupshots%></td>
         </tr>
       </table>
       <p>
