@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 	skip_before_filter :verify_authenticity_token, :only => :create
 	def new 
-		if Time.current.in_time_zone('Hong Kong').between?(Time.new(2016, 10, 9, 16).in_time_zone('Hong Kong'), Time.new(2016, 10, 13, 15).in_time_zone('Hong Kong'))
+		if Time.current.in_time_zone('Hong Kong').between?(Time.new(2016, 11, 3, 16).in_time_zone('Hong Kong'), Time.new(2016, 11, 30, 15).in_time_zone('Hong Kong'))
 			super
 		else 
 			redirect_to root_path
