@@ -228,15 +228,14 @@ class AccountsController < ApplicationController
 
 	def submit_final_writeup 
 		current_account.update(final_writeup:  true)
-		redirect_to view_writeup_accounts_path
+		redirect_to edit_info_accounts_path
 	end
 
 	def edit_info
 		@account = current_account
 	end
 
-	def update
-		
+	def update		
 		if params[:writeup_submit]
 			@account = current_account
 			@account.update_attributes!(account_params)
