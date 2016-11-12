@@ -47,8 +47,8 @@
         <% else %>
           <h4><%="#{current_account.yr} - " + "#{current_account.course}" %></h4>
         <% end %>
-        <% if @current_account.double_major.present? %>
-          <h4><%=current_account.double_major %></h4>
+        <% if @current_account.double_major.present? && @current_account.double_major == "graduated" %>
+          <h4><%="#{current_account.double_major} (Graduated)" %></h4>
         <% end %>
       </div>
       <div class="row">

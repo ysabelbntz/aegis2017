@@ -7,7 +7,7 @@ class Account < ActiveRecord::Base
   belongs_to :groupshot
   # validates_uniqueness_of :email, :student_id
   validates :writeup, length: { maximum: 500 }
-  validates :cellphone_number, :numericality => true, :allow_nil => true
+  validates :cellphone_number, :numericality => true, :allow_blank => true
   
   def to_s
     "#{self.student_id}, #{self.name}, #{self.yr} - #{self.course}"
