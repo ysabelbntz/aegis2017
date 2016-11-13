@@ -207,9 +207,9 @@ class AccountsController < ApplicationController
 
 	def view_writeup
 		@account = current_account
-		if !current_account.can_write
-			redirect_to accounts_path
-		end
+		#if !current_account.can_write
+			#redirect_to accounts_path
+		#end
 	end
 
 	def add_writeup
@@ -217,8 +217,8 @@ class AccountsController < ApplicationController
 
 		if current_account.final_writeup
 			redirect_to view_writeup_accounts_path
-		elsif !current_account.can_write
-			redirect_to accounts_path
+		#elsif !current_account.can_write
+			#redirect_to accounts_path
 		end
 	end
 
@@ -250,6 +250,6 @@ class AccountsController < ApplicationController
 	end
 
 	def account_params
-	  params.require(:account).permit(:writeup, :double_major, :minor, :cellphone_number, :full_course)
+	  params.require(:account).permit(:writeup, :double_major, :minor, :cellphone_number, :full_course, :second_status)
 	end
 end
