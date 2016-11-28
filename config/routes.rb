@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       get 'slot'
       get 'slip'
       get 'groupslip'
+      post 'reset_writeup'
       post 'sign_up'
       post 'photoshoot'
       post 'reschedule'

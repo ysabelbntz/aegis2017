@@ -235,6 +235,19 @@ class AccountsController < ApplicationController
 		@account = current_account
 	end
 
+	def reset_writeup 
+		@student = Account.find_by(student_id: params[:id])
+
+		if @student.present? 
+			@student.update_attributes(final_writeup: false)
+			flash[:notice] = "Student #{params[:id]} write-up set to temporary status."
+			redirect_to :back
+		else
+			flash[:notice] = "Student #{params[:id]} not found."
+			redirect_to :back
+		end
+	end
+
 	def update		
 		if params[:writeup_submit]
 			@account = current_account
