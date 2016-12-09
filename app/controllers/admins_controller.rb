@@ -63,8 +63,6 @@ class AdminsController < ApplicationController
 		@a = Student.where(account: true).where.not(id: Account.select("student_id"))
 		@b = Account.where.not(student_id: Student.select(:id).where(account:true))
 
-		@accounts_list = Account.all
-
 
 		@soh_shoots = Account.where(school: "SOH").where.not(timeslot_id: nil).count
 		@soss_shoots = Account.where(school: "SOSS").where.not(timeslot_id: nil).count
@@ -73,11 +71,21 @@ class AdminsController < ApplicationController
 
 		@total_shoots = Account.where.not(timeslot_id: nil).count
 
-		@total_groupshots = Groupslot.all.count
+		@accounts_list = Account.order(:school, :course, :name)
+		#@soh_list = Account.where(school: "SOH").order(:course, :name)
+		#@som_list = Account.where(school: "SOM").order(:course, :name)
+		#@sose_list = Account.where(school: "SOSE").order(:course, :name)
+		#@soss_list = Account.where(school: "SOSS").order(:course, :name)
+
+		# @total_groupshots = Groupslot.all.count
 
 	    respond_to do |format|
 	      format.html
 	      format.csv { send_data @accounts_list.to_csv, filename: "accounts-#{Date.today}.csv" }
+	      #format.csv { send_data @soh_list.to_csv, filename: "soh-#{Date.today}.csv" }
+	      #format.csv { send_data @som_list.to_csv, filename: "som-#{Date.today}.csv" }
+	      #format.csv { send_data @sose_list.to_csv, filename: "sose-#{Date.today}.csv" }
+	      #format.csv { send_data @soss_list.to_csv, filename: "soss-#{Date.today}.csv" }
 	    end
 
 	end
