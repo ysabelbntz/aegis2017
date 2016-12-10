@@ -43,7 +43,6 @@
         <% if @account.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
-         
             <ul>
             <% @account.errors.full_messages.each do |msg| %>
               <li><%= msg %></li>
@@ -51,6 +50,9 @@
             </ul>
           </div>
         <% end %>
+        <div class="field col-xs-offset-3 col-xs-8">
+          <h5>This is where you'll put your header information. All information here as of Dec 11 will be reflected on your writeup header.</h5>
+        </div>
         <div class="field col-xs-offset-3 col-xs-8">
           <div class="col-xs-3">
             <%= f.label :student_id, "ID Number" %>
