@@ -7,7 +7,7 @@ class AccountsController < ApplicationController
 		@events = Event.where(description: ["All", @school]).order(:start_time)
 		@timeslot = Timeslot.find_by(id: current_account.timeslot_id)
 		
-		@groupslot = Groupslot.find_by(student_id: current_account.student_id)
+		# @groupslot = Groupslot.find_by(student_id: current_account.student_id)
 		
 		if @groupslot.present?
 			@groupshot = Groupshot.find_by(id: @groupslot.groupshot_id)
@@ -263,6 +263,6 @@ class AccountsController < ApplicationController
 	end
 
 	def account_params
-	  params.require(:account).permit(:writeup, :double_major, :minor, :cellphone_number, :full_course, :second_status)
+	  params.require(:account).permit(:writeup, :double_major, :minor, :cellphone_number, :full_course, :second_status, :email)
 	end
 end
