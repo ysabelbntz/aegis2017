@@ -40,24 +40,11 @@
   <br></br>
   <div class="row writeup">
     <div class="col-xs-6 col-xs-offset-2 col-md-offset-3">
-      <% if current_account.final_writeup == true %>
-        <h4>Submitted Writeup:</h4>
-      <% else %>
-        <h4>Current Writeup:</h4>
-      <% end %>
+      <h4>Final Writeup:</h4>
       <% if current_account.writeup.present? %>
         <p class="writeup-body"><%=current_account.writeup %></p>
       <% else %>
         <p class="writeup-body">No writeup submitted.</p>
-      <% end %>
-      <% if !current_account.final_writeup%>
-        <% if @account.writeup.present? %>
-            <%= button_to "Edit Writeup", add_writeup_accounts_path, method: :get, class: "center" %>
-          <br>
-          <%= button_to "Submit Final Writeup", submit_writeup_accounts_path, method: :get, class: "center" %>
-        <% else %>
-          <%= button_to "Submit A Draft Writeup", add_writeup_accounts_path, method: :get %>
-        <% end %>
       <% end %>
     </div>
   </div>

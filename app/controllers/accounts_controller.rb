@@ -217,8 +217,8 @@ class AccountsController < ApplicationController
 
 		if current_account.final_writeup
 			redirect_to view_writeup_accounts_path
-		#elsif !current_account.can_write
-			#redirect_to accounts_path
+		elsif !current_account.can_write
+			redirect_to accounts_path
 		end
 	end
 
