@@ -62,13 +62,13 @@
             <input type="radio" name="inlineRadioOptions" id="genericwriteup" value="option2"> Generic writeup
           </label>
           <div class="form-group">
-            <%= f.text_area :writeup, rows: "5", :class => "writeup form-control", :maxlength => 500 %>
+            <%= f.text_area :writeup, rows: "5", :class => "writeup form-control", :maxlength => 505 %>
           </div>
           <p class="cws"></p>
         </div>
         <div class="actions col-md-offset-4 col-md-4 col-xs-10 col-xs-offset-1">
           <div class="center">
-            <%= f.submit :class => "writeup-submit", :name => "writeup_submit", :value => "Save Draft", class: "center" %><br>
+            <%= f.submit :id => "writeup-submit", :class => "writeup-submit", :name => "writeup_submit", :value => "Save Draft", class: "center" %><br>
             <%= button_to "Cancel", :back, :name => "cancel", class: "center"%>
           </div>
         </div>

@@ -77,15 +77,16 @@ class AdminsController < ApplicationController
 		#@sose_list = Account.where(school: "SOSE").order(:course, :name)
 		#@soss_list = Account.where(school: "SOSS").order(:course, :name)
 
-		# @total_groupshots = Groupslot.all.count
+		@total_groupshots = Groupslot.all.count
 
 	    respond_to do |format|
 	      format.html
-	      format.csv { send_data @accounts_list.to_csv, filename: "accounts-#{Date.today}.csv" }
+	      format.csv { send_data @accounts_list.to_csv,  filename: "accounts-#{Date.today}.csv" }
 	      #format.csv { send_data @soh_list.to_csv, filename: "soh-#{Date.today}.csv" }
 	      #format.csv { send_data @som_list.to_csv, filename: "som-#{Date.today}.csv" }
 	      #format.csv { send_data @sose_list.to_csv, filename: "sose-#{Date.today}.csv" }
 	      #format.csv { send_data @soss_list.to_csv, filename: "soss-#{Date.today}.csv" }
+	      format.xls
 	    end
 
 	end

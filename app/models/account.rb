@@ -6,7 +6,7 @@ class Account < ActiveRecord::Base
   belongs_to :timeslot
   belongs_to :groupshot
   # validates_uniqueness_of :email, :student_id
-  validates :writeup, length: { maximum: 500 }
+  validates :writeup, length: { maximum: 505 }
   validates :cellphone_number, :numericality => true, :allow_blank => true
   
   def to_s
@@ -162,12 +162,12 @@ class Account < ActiveRecord::Base
     # create_or_update comes from persistence.rb
 
     def self.to_csv(options = {})
-      CSV.generate(options) do |csv|
+      (CSV.generate(options) do |csv|
         columns = %w(student_id name yr school full_course double_major minor cellphone_number email writeup)
         csv << columns
         all.each do |account|
           csv << account.attributes.values_at(*columns)
         end
-      end
+      end).encode('WINDOWS-1252', :undef => :replace, :replace => '')
     end
 end

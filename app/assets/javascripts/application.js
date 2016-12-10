@@ -306,6 +306,13 @@ $('.accounts.add_writeup').ready(function(){
         var text_remaining = text_max - text_length;
 
         $('.cws').html(text_remaining + ' characters remaining');
+
+        if (text_remaining < 0) {
+        	$('#writeup-submit').prop('disabled', true);
+        }
+        else {
+        	$('#writeup-submit').prop('disabled', false);
+        }
     });
 
 
