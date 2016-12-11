@@ -19,6 +19,7 @@
         <li><%= link_to 'EVENTS', events_path, method: :get %></li>
         <li><%= link_to 'ACCOUNTS', accounts_admins_path, method: :get %></li>
         <li><%= link_to 'TIMESLOTS', timeslots_admins_path, method: :get %></li>
+        <li><%= link_to 'WRITEUPS', writeups_admins_path, method: :get %></li>
         <li><%= link_to "LOG OUT", destroy_admin_session_path, :method => :delete %></a>
         </li>
       </ul>
@@ -90,7 +91,7 @@
         </tr>
       </table>
       <p>
-        <%= link_to "Download Accounts CSV", admins_path(format: "csv") %><br>
+        <%= link_to "Download Writeup Compilation", admins_path(format: "csv") %><br>
       </p>
     </div>
     <div class="col-xs-12 col-md-4">

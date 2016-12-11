@@ -222,6 +222,25 @@ class AccountsController < ApplicationController
 		end
 	end
 
+	def admin_writeup
+		@student = Account.find_by(student_id: params[:id])
+
+		if @student.present? 
+			if @student.writeup.present?
+				flash[:notice] = "Student #{params[:id]} has a write-up."
+				redirect_to :back
+			else
+				@student.update_attributes(writeup: params[:writeup])
+				@student.update_attributes(final_writeup: true)
+				flash[:notice] = "Student #{params[:id]} write-up added."
+				redirect_to :back
+			end
+		else
+			flash[:notice] = "Student #{params[:id]} not found."
+			redirect_to :back
+		end
+	end
+
 	def submit_writeup
 
 	end
