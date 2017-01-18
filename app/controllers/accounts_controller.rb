@@ -7,7 +7,7 @@ class AccountsController < ApplicationController
 		@events = Event.where(description: ["All", @school]).order(:start_time)
 		@timeslot = Timeslot.find_by(id: current_account.timeslot_id)
 		
-		@groupslot = Groupslot.find_by(student_id: current_account.student_id)
+		# @groupslot = Groupslot.find_by(student_id: current_account.student_id)
 		
 		if @groupslot.present?
 			@groupshot = Groupshot.find_by(id: @groupslot.groupshot_id)
@@ -277,7 +277,7 @@ class AccountsController < ApplicationController
 			@account.update_attributes!(account_params)
 			redirect_to accounts_path
 		else
-			redirect_to view_writeup_accounts_path
+			redirect_to accounts_path
 		end
 	end
 
