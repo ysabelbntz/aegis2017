@@ -35,7 +35,7 @@
         <li><a href="#faq">FAQs</a></li>
         <li><a href="#contactus">CONTACT US</a></li>
         <% if account_signed_in? %>
-        	<li><%= link_to "SIGN UPS AND WRITEUPS", accounts_path, method: :get %></li>
+        	<li><%= link_to "YEARBOOK PREVIEW", accounts_path, method: :get %></li>
         	<li><%= link_to "LOG OUT", destroy_account_session_path, :method => :delete %></li>
         <% else %>
 	        <li class="dropdown">

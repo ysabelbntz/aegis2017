@@ -16,14 +16,7 @@
       <ul class="nav navbar-nav">
         <li><%= link_to 'HOME', root_path, method: :get %></li>
         <li class="active"><%= link_to 'ACCOUNT', accounts_path, method: :get %></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOOT SLOTS &#x25BC;<span class="caret" style="border:transparent;margin-left:15px;"></span></a>
-          <ul class="dropdown-menu shoot-dropdown">
-            <li class=""><%= link_to 'PHOTOSHOOT SIGN UPS', sign_ups_accounts_path, method: :get %></li>
-            <li class=""><%= link_to 'GROUPSHOOT SIGN UPS', group_signups_accounts_path, method: :get %></li>
-          </ul>
-        </li>
-        <li class=""><%= link_to 'WRITE UPS', view_writeup_accounts_path, method: :get %></li>
+        <li><%= link_to 'YEARBOOK PREVIEW', yearbook_preview_accounts_path, method: :get %></li>
         <li><%= link_to "LOG OUT", destroy_account_session_path, :method => :delete %></a>
         </li>
       </ul>
@@ -65,24 +58,6 @@
           <li><%= event.title + ": " %><% if event.start_time == event.end_time %><%= event.start_time.strftime("%B %d, %Y") %><% else %><% e = event.end_time - 1.day %><%= event.start_time.strftime("%B %d, %Y") + " to " + e.strftime("%B %d, %Y") %><% end %></li>
         </ul>
       <% end %>
-      <br>
-      <h3>Photoshoot schedule</h3>
-      <% if @timeslot.present? %>
-        <h4>Individual: <span class="text-bold"><%=@timeslot.to_s%></span></h4>
-        <%= button_to "DOWNLOAD AS PDF", slip_accounts_path(format: 'pdf'), method: :get%><br><br>
-      <% else %>
-        <h4>No timeslot.</h4><br><br>
-      <% end %>
-      <% if @groupslot.present? %>
-        <h4>Groupshot:<span class="text-bold"> <%= @groupslot.group_name %>: <%=@groupshot.to_s%></span></h4>
-        <%= button_to "DOWNLOAD AS PDF", groupslip_accounts_path(groupslot: @groupshot.id, format: 'pdf'), method: :get%>
-      <% else %>
-        <h4>No groupslot.</h4>
-      <% end %>
-      <br>
-      <h3>Yearbook Writeup</h3>
-      <h4 style="white-space: pre-line;"><%= current_account.writeup %></h4>
-
     </div>
   </div>
 </div>

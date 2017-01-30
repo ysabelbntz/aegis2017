@@ -7,7 +7,7 @@ class AccountsController < ApplicationController
 		@events = Event.where(description: ["All", @school]).order(:start_time)
 		@timeslot = Timeslot.find_by(id: current_account.timeslot_id)
 		
-		@groupslot = Groupslot.find_by(student_id: current_account.student_id)
+		# @groupslot = Groupslot.find_by(student_id: current_account.student_id)
 		
 		if @groupslot.present?
 			@groupshot = Groupshot.find_by(id: @groupslot.groupshot_id)
@@ -265,6 +265,10 @@ class AccountsController < ApplicationController
 			flash[:notice] = "Student #{params[:id]} not found."
 			redirect_to :back
 		end
+	end
+
+	def yearbook_preview
+
 	end
 
 	def update		
