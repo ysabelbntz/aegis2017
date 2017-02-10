@@ -269,7 +269,7 @@ class AccountsController < ApplicationController
 
 	def yearbook_preview
 		@casualshot = current_account.yearbook_shot
-		@togashots = CoursePage.select('page_number').where(course: current_account.course)
+		@togashots = CoursePage.select('page_number').where(course: current_account.course.upcase)
 	end
 
 	def addfeedback

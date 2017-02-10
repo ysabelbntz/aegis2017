@@ -37,6 +37,7 @@ $('.admins.students').ready(function(){
 		            $('#student-yrcrs').text(student.yr + " - " + student.course);
 		            $('#student-school').text(student.school);
 		            $('#student-account').text(student.account);
+		            $('#student-yrbookpage').text(student.page_number);
 		        } else {
 		        	$('#student-name').text("Not found.");	
 		        }
