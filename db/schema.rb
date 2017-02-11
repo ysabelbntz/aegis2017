@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110150347) do
+ActiveRecord::Schema.define(version: 20170211072616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20161110150347) do
     t.string   "full_course"
     t.boolean  "final_writeup"
     t.string   "second_status"
+    t.text     "feedback"
   end
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
@@ -72,6 +73,11 @@ ActiveRecord::Schema.define(version: 20161110150347) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "course_pages", force: :cascade do |t|
+    t.string  "course"
+    t.integer "page_number"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -81,12 +87,22 @@ ActiveRecord::Schema.define(version: 20161110150347) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "groupslots", force: :cascade do |t|
+    t.integer "groupshot_id", null: false
+    t.integer "student_id",   null: false
+    t.string  "group_name",   null: false
+  end
+
+  add_index "groupslots", ["groupshot_id"], name: "index_groupslots_on_groupshot_id", using: :btree
+  add_index "groupslots", ["student_id"], name: "index_groupslots_on_student_id", using: :btree
+
   create_table "students", force: :cascade do |t|
     t.string  "name"
     t.integer "yr"
     t.string  "course"
     t.string  "school"
     t.boolean "account"
+    t.integer "page_number"
   end
 
   create_table "timeslots", force: :cascade do |t|

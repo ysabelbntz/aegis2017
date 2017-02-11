@@ -36,7 +36,7 @@ class RegistrationsController < Devise::RegistrationsController
 		    if resource.class == Admin
 		      admins_path
 		    elsif resource.class == Account
-		      accounts_path
+		      yearbook_preview_path
 		    end 
 		end
 
