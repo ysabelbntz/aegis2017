@@ -26,6 +26,7 @@
 
 <div class="container with-fixed-navbar">
   <div class="row">
+    <h4 class="center-align" style="color:green"><%= flash[:success] %></h4>
     <h3 class="text-center">Individual page:</h3>
     <br>
     <div class="col-xs-12 col-sm-10 col-sm-offset-1" style="margin-bottom:30px;">
@@ -51,6 +52,22 @@
 
 
     <% end %>
+  </div>
+
+  <div class="row">
+    <% if current_account.feedback.nil? %>
+    <h3 class="text-center" style="margin-top:30px;margin-bottom:10px;">Concerns</h3>
+    <p class="text-center">You will only be able to submit a concern once. <br>Please review your concern before submitting. <br>You don't have to submit a concern if you're okay with your yearbook pages already.</p>
+    
+    <form class="form-horizontal" action="/accounts/addfeedback" method="POST">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+      <div class="form-group">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <textarea name="feedback" id="" rows="5" class="writeup form-control"></textarea>
+      <button type="submit" class="center writeup-submit" style="margin-top:30px;">Save Feedback</button>
+      </div></div>
+    </form>
+    <%end%>
   </div>
       
 </div>

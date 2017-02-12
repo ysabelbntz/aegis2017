@@ -272,21 +272,33 @@ class AccountsController < ApplicationController
 		@togashots = CoursePage.select('page_number').where("course LIKE ?", '%'+current_account.course+'%')
 	end
 
+	def addfeedback
+		current_account.feedback = params[:feedback]
+		current_account.save
+
+		flash[:success] = "Feedback submitted!"
+		redirect_to :back
+	end
+
 	def update		
-		if params[:writeup_submit]
-			@account = current_account
-			@account.update_attributes!(account_params)
-			redirect_to view_writeup_accounts_path
-		elsif params[:account_submit]
-			@account = current_account
-			@account.update_attributes!(account_params)
-			redirect_to accounts_path
-		else
-			redirect_to accounts_path
-		end
+		# if params[:writeup_submit]
+		# 	@account = current_account
+		# 	@account.update_attributes!(account_params)
+		# 	redirect_to view_writeup_accounts_path
+		# elsif params[:account_submit]
+		# 	@account = current_account
+		# 	@account.update_attributes!(account_params)
+		# 	redirect_to accounts_path
+		# else
+			# redirect_to accounts_path
+		# end
+
+		current_account.update_attribute(:feedback, params[:feedback])
+		flash[:success] = "Feedback submitted!"
+		redirect_to yearbook_preview_path
 	end
 
 	def account_params
-	  params.require(:account).permit(:writeup, :double_major, :minor, :cellphone_number, :full_course, :second_status, :email)
+	  params.require(:account).permit(:writeup, :double_major, :minor, :cellphone_number, :full_course, :second_status, :email, :feedback)
 	end
 end
