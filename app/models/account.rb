@@ -79,7 +79,15 @@ class Account < ActiveRecord::Base
   end
 
   def can_login
-    return false
+
+    @start = Time.new(2017, 2, 12, 16).in_time_zone('Hong Kong')
+    @end = Time.new(2016,2,15,16).in_time_zone('Hong Kong')
+
+    if Time.current.in_time_zone('Hong Kong').between?(@start, @end)
+      return true
+    else
+      return false
+    end
     # @SOHstart = Time.new(2016, 10, 2,23).in_time_zone('Hong Kong')
     # @SOHend = Time.new(2016, 10, 3, 15).in_time_zone('Hong Kong')
 
