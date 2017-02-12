@@ -38,9 +38,9 @@ class Account < ActiveRecord::Base
     Timeslot.find_by(id: self.timeslot_id).to_s
   end
 
-  # def active_for_authentication?
-  #   super and self.can_login
-  # end
+  def active_for_authentication?
+    super and self.can_login
+  end
 
   def inactive_message
     # @SOHstart = Time.new(2016, 10, 2,23).in_time_zone('Hong Kong')
