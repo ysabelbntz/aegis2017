@@ -59,6 +59,12 @@
           <li><%= event.title + ": " %><% if event.start_time == event.end_time %><%= event.start_time.strftime("%B %d, %Y") %><% else %><% e = event.end_time - 1.day %><%= event.start_time.strftime("%B %d, %Y") + " to " + e.strftime("%B %d, %Y") %><% end %></li>
         </ul>
       <% end %>
+      <h3>Yearbook Writeup</h3>
+      <% if current_account.writeup.present? %>
+        <h4 style="white-space: pre-line;"><%= current_account.writeup %></h4>
+      <% else %>
+        <h4>No Writeup</h4>
+      <% end %>
     </div>
   </div>
 </div>
