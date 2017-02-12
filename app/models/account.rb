@@ -143,11 +143,13 @@ class Account < ActiveRecord::Base
     #   return false
     # end
 
-    if Time.current.in_time_zone('Hong Kong').between?(@specialstart, @specialend)
-      return true
-    else
-      return false
-    end
+    # if Time.current.in_time_zone('Hong Kong').between?(@specialstart, @specialend)
+    #   return true
+    # else
+    #   return false
+    # end
+
+    return false
 
 
   end
