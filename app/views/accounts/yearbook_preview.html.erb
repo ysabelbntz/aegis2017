@@ -59,11 +59,20 @@
     <h3 class="text-center" style="margin-top:30px;margin-bottom:10px;">Concerns</h3>
     <p class="text-center">You will only be able to submit a concern once. <br>Please review your concern before submitting. <br>You don't have to submit a concern if you're okay with your yearbook pages already.</p>
     
-    <form class="form-horizontal" action="/accounts/addfeedback" method="POST">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+    <form class="form-horizontal concerns-form" action="/accounts/addfeedback" method="POST">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="form-group">
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-      <textarea name="feedback" id="" rows="5" class="writeup form-control"></textarea>
+      <label for="page_number" style="font-family: 'Roboto'!important;font-size:16px;">Relevant page number/s:</label>
+      <input type="text" name="page_number" class="form-control">
+      <br>
+      <br>
+      <label for="name" style="font-family: 'Roboto'!important;font-size:16px;">Name in yearbook:</label>
+      <input type="text" name="name" class="form-control">
+      <br>
+      <br>
+      <label for="feedback" style="font-family: 'Roboto'!important;font-size:16px;">Concern:</label>
+      <textarea name="feedback" id="" rows="5" class="writeup form-control" style="margin-top:0px;"></textarea>
       <button type="submit" class="center writeup-submit" style="margin-top:30px;">Save Feedback</button>
       </div></div>
     </form>

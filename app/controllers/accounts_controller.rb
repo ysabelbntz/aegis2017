@@ -273,7 +273,9 @@ class AccountsController < ApplicationController
 	end
 
 	def addfeedback
-		current_account.feedback = params[:feedback]
+
+		feedback = "["+params[:page_number]+"]"+"["+params[:name]+"]"+"["+params[:feedback]+"]"
+		current_account.feedback = feedback
 		current_account.save
 
 		flash[:success] = "Feedback submitted!"
