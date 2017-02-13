@@ -28,6 +28,14 @@
 	 		</div>
 	 	</div>
 	 </div>
+	 <% @now = Time.current.in_time_zone('Hong Kong') %><br>
+	 <% @start = Time.new(2017,2,13,0).in_time_zone('Hong Kong') %> <br>
+	 <% @end = Time.new(2017,2,15,0).in_time_zone('Hong Kong') %>
+<%if Time.current.in_time_zone('Hong Kong').between?(Time.new(2017,2,12,16).in_time_zone('Hong Kong') , Time.new(2017,2,14,16).in_time_zone('Hong Kong'))%>
+	hi
+<% else %>
+	hello
+<%end%>
 	</footer>
 </body>
 </html>

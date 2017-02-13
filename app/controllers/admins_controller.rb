@@ -69,6 +69,12 @@ class AdminsController < ApplicationController
 		@sose_shoots = Account.where(school: "SOSE").where.not(timeslot_id: nil).count
 		@som_shoots = Account.where(school: "SOM").where.not(timeslot_id: nil).count
 
+		@soh_feedback = Account.where(school: "SOH").where.not(feedback: nil).count
+		@som_feedback = Account.where(school: "SOM").where.not(feedback: nil).count
+		@soss_feedback = Account.where(school: "SOSS").where.not(feedback: nil).count
+		@sose_feedback = Account.where(school: "SOSE").where.not(feedback: nil).count
+		@total_feedback = Account.where.not(feedback: nil).count
+
 		@total_shoots = Account.where.not(timeslot_id: nil).count
 
 		@accounts_list = Account.order(:school, :course, :name)

@@ -88,7 +88,7 @@ $('.admins.accounts').ready(function(){
 		            $('#student-account').text(student.account);
 		            $('#student-email').text(student.email);
 		            $('#student-timeslot').text(student.get_timeslot);
-		            $('#student-writeup').text(student.writeup);
+		            $('#student-writeup').text(student.feedback);
 	        	} else {
 	        		$('#student-name').text("Not found");
 	        	}
@@ -231,6 +231,18 @@ $('.pages.index').ready(function(){
 		}
 	});
 });
+
+$('.yearbook_preview').ready(function(){
+	$('form').submit(function(e){
+		
+
+		if (($('#page_number').val()=="") || ($('#name').val()=="") || ($('#feedback').val()=="")) {
+			e.preventDefault();
+			$('#error').text("Please fill up all fields.");
+		} 
+	});
+});
+
 
 $(document).ready(function () {
 

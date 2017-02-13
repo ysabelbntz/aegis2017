@@ -40,7 +40,7 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = {:host => "localhost:3001"}
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.time_zone = 'Hong Kong'
+  config.time_zone = 'UTC'
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.gmail.com',
     :domain         => 'mail.google.com',
