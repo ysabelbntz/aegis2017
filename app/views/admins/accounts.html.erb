@@ -83,6 +83,7 @@
           <th>Course</th>
           <th>School</th>
           <th>Writeup</th>
+          <th>Feedback</th>
           <th></th>
         </tr>
         <% @accounts.each do |student| %> 
@@ -94,7 +95,7 @@
             <td><%= student.course %></td>
             <td><%= student.school %></td>
             <td style="white-space: pre-line;"><%= student.writeup %></td>
-            <td><%= link_to "Delete", destroy_account_path(student), method: :delete, data: { confirm: "Are you sure you want to delete the account #{student.student_id}?" }, :class => "event-crud" %></td>
+            <td><%= student.feedback %></td>
           </tr>
         <% end %>
       </table>

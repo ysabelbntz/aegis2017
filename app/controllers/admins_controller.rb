@@ -94,7 +94,7 @@ class AdminsController < ApplicationController
 	end
 
 	def accounts
-		@accounts = Account.all.order('student_id ASC').paginate(:page => params[:page], :per_page => 60)
+		@accounts = Account.where.not(feedback: nil).order('student_id ASC').paginate(:page => params[:page], :per_page => 60)
 
 		@account_number = Account.count
 	end
