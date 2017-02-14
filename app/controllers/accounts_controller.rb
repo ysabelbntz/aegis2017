@@ -271,7 +271,7 @@ class AccountsController < ApplicationController
 		@student = Account.find_by(student_id: params[:id])
 
 		if @student.present? 
-			@student.update_attributes(feedback: null)
+			@student.update_attributes(feedback: nil)
 			flash[:notice] = "Student #{params[:id]} feedback resetted."
 			redirect_to :back
 		else
