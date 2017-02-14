@@ -267,6 +267,19 @@ class AccountsController < ApplicationController
 		end
 	end
 
+	def reset_feedback
+		@student = Account.find_by(student_id: params[:id])
+
+		if @student.present? 
+			@student.update_attributes(feedback: null)
+			flash[:notice] = "Student #{params[:id]} feedback resetted."
+			redirect_to :back
+		else
+			flash[:notice] = "Student #{params[:id]} not found."
+			redirect_to :back
+		end
+	end
+
 	def yearbook_preview
 		@casualshot = current_account.yearbook_shot
 		@togashots = CoursePage.select('page_number').where(course: current_account.course.upcase)
