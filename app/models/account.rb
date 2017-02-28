@@ -80,9 +80,9 @@ class Account < ActiveRecord::Base
 
   def can_login
 
-    @end = Time.new(2017,2,16,0)
+    @end = Time.new(2017,3,1,0)
 
-    if Time.now < @end
+    if Time.now >= @end
       return true
     else
       return false
